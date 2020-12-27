@@ -1,0 +1,108 @@
+\documentclass{article}
+
+\usepackage[letter, total={8.5in, 11in}]{geometry}
+\usepackage[nodisplayskipstretch]{setspace}
+\usepackage[sfdefault,condensed]{roboto}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{array}
+\usepackage{color}
+\usepackage{fancyhdr}
+\usepackage{fontawesome}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\urlstyle{same}
+
+\definecolor{deepblue}{rgb}{.1,.2,.3}
+\definecolor{lightgray}{rgb}{.45,.45,.45}
+\definecolor{lightergray}{rgb}{.75,.75,.75}
+
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+
+\begin{document}
+\newgeometry{margin=2cm}
+
+\begin{minipage}[t]{0.7\textwidth}
+	\begin{flushleft}
+		\vfill \textbf{\Huge{\jvar{personal.name}}} \\ \hfill \vfill
+	\end{flushleft}
+\end{minipage}
+\begin{minipage}[t]{0.3\textwidth}
+	\begin{flushright}
+		\textit{
+			\setstretch{1.15}
+			\jvar{personal.phone} \hspace{1mm} \color{lightergray}\faPhoneSquare\color{black} \\
+			\href{mailto:\jvar{personal.email}}{\jvar{personal.email}} \hspace{1mm} \color{lightergray}\faEnvelope\color{black} \\
+			\href{\jvar{personal.url_personal}}{\jvar{personal.url_personal}} \hspace{1mm} \color{lightergray}\faExternalLinkSquare\color{black} \\
+			\href{\jvar{personal.url_github}}{\jvar{personal.url_github_abbr}} \hspace{1mm} \color{lightergray}\faGithubSquare\color{black} \\
+			\href{\jvar{personal.url_linkedin}}{\jvar{personal.url_linkedin_abbr}} \hspace{1mm} \color{lightergray}\faLinkedinSquare\color{black} \\
+		}
+	\end{flushright}
+\end{minipage}
+
+\textbf{\textcolor{deepblue}{\uppercase{
+\jvar{education.school.label}
+}}} \\\\ \hfill
+\begin{tabular}{R{3.5cm} L{11.5cm}}
+	\jblock{for entry in education.school.entries}
+		\textcolor{lightgray}{\jvar{entry.date}} &
+			\textbf{\jvar{entry.program}} \linebreak
+			\textit{\jvar{entry.school}} \\\\ \hfill
+	\jblock{endfor}
+\end{tabular}
+
+\textbf{\textcolor{deepblue}{\uppercase{\jvar{work.label}}}} \\\\ \hfill
+\begin{tabular}{R{3.5cm} L{11.5cm}}
+	\jblock{for entry in work.entries}
+		\textcolor{lightgray}{\jvar{entry.from} --- \jvar{entry.to}} &
+			\textbf{\jvar{entry.role}}, \textit{\jvar{entry.company}} \linebreak
+			\jvar{entry.description} \\\\ \hfill
+	\jblock{endfor}
+\end{tabular}
+
+\textbf{\textcolor{deepblue}{\uppercase{\jvar{skills.label}}}} \\\\ \hfill
+\begin{tabular}{R{3.5cm} L{11.5cm}}
+	\jblock{for entry in skills.entries}
+		\textcolor{lightgray}{\jvar{entry.category}} & \textit{\jvar{entry.entries|join(', ')}} \\ \hfill
+	\jblock{endfor}
+\end{tabular}
+
+\textbf{\textcolor{deepblue}{\uppercase{\jvar{projects.label}}}} \\\\ \hfill
+\begin{tabular}{R{3.5cm} L{11.5cm}}
+	\jblock{for entry in projects.entries}
+		\textcolor{lightgray}{\jvar{entry.date}} &
+			\textbf{\jvar{entry.name}} \linebreak
+			\jvar{entry.description} \\\\ \hfill
+	\jblock{endfor}
+\end{tabular}
+
+\textbf{\textcolor{deepblue}{\uppercase{\jvar{leadership.label}}}} \\\\ \hfill
+\begin{tabular}{R{3.5cm} L{11.5cm}}
+	\jblock{for entry in leadership.entries}
+		\textcolor{lightgray}{
+			\jblock{if entry.to is defined}
+				\jvar{entry.from} --- \jvar{entry.to}
+			\jblock{ else }
+				\jvar{entry.from}
+			\jblock{ endif }
+		} &
+			\textbf{\jvar{entry.name}} \linebreak
+			\jvar{entry.description} \\\\ \hfill
+	\jblock{endfor}
+\end{tabular}
+
+\textbf{\textcolor{deepblue}{\uppercase{\jvar{activities.label}}}} \\\\ \hfill
+\begin{tabular}{R{3.5cm} L{11.5cm}}
+	\jblock{for entry in activities.entries}
+		\textcolor{lightgray}{\jvar{entry.title}} & \jvar{entry.description} \\ \hfill
+	\jblock{endfor}
+\end{tabular}
+
+\end{document}

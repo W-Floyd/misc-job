@@ -1,0 +1,128 @@
+personal:
+  name: William Floyd
+  phone: +1 (865) 244-9330
+  email: william.png2000@gmail.com
+  image: profile.png
+  url_personal: https://notmy.space
+  url_github: https://github.com/W-Floyd
+  url_github_abbr: github.com/W-Floyd
+  url_linkedin: https://linkedin.com/in/william-floyd
+  url_linkedin_abbr: linkedin.com/in/william-floyd
+
+# Catalog your experiences and what you have been involved in over the past 3-4 years. Do not include anything from high school after your freshman year of college. Consider the following categories for things you might include:
+# • Education, trainings, certifications
+# • Research, relevant coursework, projects
+# • Previous employment, internships
+# • Military experience
+# • International experience
+# • Leadership experience
+# • Community service, volunteer work
+# • Activities, campus involvement
+# • Honors, awards
+# • Computer skills
+# • Language proficiencies
+# • Professional associations
+# Spend time and write down ALL of your experience and skills, then slowly begin to pull out what is the most relevant and applicable for your professional profile. Brainstorm about how you want your resume to appear to a potential employer
+
+work:
+  label: Work Experiences
+  entries:
+    - role: Machinist and Welder
+      company: Rouge Machining
+      from: March 2018
+      to: continuing (part time)
+      description: >
+        Fabricated tube steel table frames, produced and worked on components for lead shields for the nuclear industry in Oak Ridge, TN.
+        Designed, marketed, and manufactured accessories for mechanical keyboards during downtime.
+
+education:
+  school:
+    label: Education
+    entries:
+      - program: Mechanical Engineering, B.S. (BSME)
+        school: LeTourneau University
+        date: Expected May 2022
+
+projects:
+  label: Projects
+  entries:
+    - name: ClickBait
+      description: >
+        Led an engineering project to create a battery powered automatic fishing caster intended for disabled users, as part of Project Management, Design, and Entrepreneurship.
+      date: Fall 2019
+    - name: MIDIMixer
+      date: Summer 2020
+      description: >
+        Designed a PCB to assemble a potentiometer bank for controlling a computer DAW.
+    - name: Freshman Project Design Team
+      date: Fall 2020 --- continuing
+      description: >
+        Colaborating on design team for 2021 freshman engineering projects.
+
+leadership:
+  label: Leadership Experience
+  entries:
+    - name: Grading Assistant
+      from: Fall 2020
+      description: >
+        Grading for IEP Graphics Lab using SolidWorks
+    - name: Teaching Assistant
+      from: Fall 2020
+      description: >
+        Teaching assistant for IEP Printer Lab
+
+skills:
+  label: Technical Skills
+  entries:
+    - category: CAD/3D Modeling
+      entries:
+        - SolidWorks
+        - OpenSCAD
+        - Blender
+        - KiCAD
+    - category: Programming
+      entries:
+        - Golang
+        - Bash scripting
+        - C++
+    - category: Software Development
+      entries:
+        - Linux system administration
+        - Git
+        - Docker
+        - PlatformIO
+        - MQTT
+    - category: Multimedia
+      entries:
+        - Inkscape
+        - Photoshop
+        - After Effects
+        - LaTeX
+    - category: Fabrication
+      entries:
+        - Welding (MIG, stick)
+        - Lathing
+        - Milling
+    - category: Prototyping
+      entries:
+        - 3D Printing (FDM)
+        - Soldering
+        - Electronics Design
+        - PCB layout
+
+activities:
+  label: Activities and Achievements
+  entries:
+    - title: Deans List
+      description: >
+        Fall 2018
+    - title: Presidents List
+      description: >
+        Spring 2020
+    - title: Open Source
+      description: >
+        Participates in various open source projects, including software and graphic design
+
+misc:
+  footnote: ""
+  language: english
