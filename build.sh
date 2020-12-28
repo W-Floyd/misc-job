@@ -2,6 +2,12 @@
 
 __output_dir='output'
 
+if [ -e '.gitignore' ]; then
+    rm '.gitignore'
+fi
+
+touch '.gitignore'
+
 ################################################################################
 
 while read -r __progname; do
@@ -101,7 +107,13 @@ if [ -d '__pycache__' ]; then
     rm -r '__pycache__'
 fi
 
-sort '.gitignore' | uniq > '.gitignore2'
+while read -r __file; do
+    rm "${__file}"
+done < '.gitignore'
+
+cat '.gitignore_persist' >>'.gitignore'
+
+sort '.gitignore' | uniq >'.gitignore2'
 mv '.gitignore2' '.gitignore'
 
 exit

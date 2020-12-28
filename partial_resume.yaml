@@ -1,28 +1,4 @@
-personal:
-  name: William Floyd
-  phone: +1 (865) 244-9330
-  email: william.png2000@gmail.com
-  image: profile.png
-  url_personal: https://notmy.space
-  url_github: https://github.com/W-Floyd
-  url_github_abbr: github.com/W-Floyd
-  url_linkedin: https://linkedin.com/in/william-floyd
-  url_linkedin_abbr: linkedin.com/in/william-floyd
-
-# Catalog your experiences and what you have been involved in over the past 3-4 years. Do not include anything from high school after your freshman year of college. Consider the following categories for things you might include:
-# • Education, trainings, certifications
-# • Research, relevant coursework, projects
-# • Previous employment, internships
-# • Military experience
-# • International experience
-# • Leadership experience
-# • Community service, volunteer work
-# • Activities, campus involvement
-# • Honors, awards
-# • Computer skills
-# • Language proficiencies
-# • Professional associations
-# Spend time and write down ALL of your experience and skills, then slowly begin to pull out what is the most relevant and applicable for your professional profile. Brainstorm about how you want your resume to appear to a potential employer
+{{personal}}
 
 work:
   label: Work Experiences
