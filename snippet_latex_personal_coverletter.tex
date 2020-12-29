@@ -1,0 +1,24 @@
+\begin{minipage}[t]{0.35\textwidth}
+	\vspace{-7pt}
+	\begin{flushleft}
+		\textbf{\huge{\jvar{personal.name}}}
+	\end{flushleft}
+\end{minipage}
+\begin{minipage}[t]{0.65\textwidth}
+	\begin{minipage}[t]{0.5\textwidth}
+		\begin{flushleft}
+			\setstretch{1.15}
+			\jblock{for line in personal.address}
+				\jvar{line}\\
+			\jblock{endfor}
+		\end{flushleft}
+	\end{minipage}
+	\begin{minipage}[t]{0.5\textwidth}
+		\begin{flushright}
+			\setstretch{1.15}
+			\jvar{personal.phone} \hspace{1mm} \color{lightergray}\faPhoneSquare\color{black} \\
+			\href{mailto:\jvar{personal.email}}{\jvar{personal.email}} \hspace{1mm} \color{lightergray}\faEnvelope\color{black} \\
+			\href{\jvar{personal.url_linkedin}}{\jvar{personal.url_linkedin_abbr}} \hspace{1mm} \color{lightergray}\faLinkedinSquare\color{black} \\
+		\end{flushright}
+	\end{minipage}
+\end{minipage}

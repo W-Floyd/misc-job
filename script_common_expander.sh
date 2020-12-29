@@ -11,9 +11,11 @@ while read -r __filename; do
 
     __lookup[${__name}]="$(cat "${__filename}")"
 
-done < <(find . -maxdepth 1 -type f -iname 'snippet_*.yaml')
+done < <(find . -maxdepth 1 -type f -iname 'snippet_*')
 
 while read -r __filename; do
+
+    echo "  Filling: ${__filename#./}"
 
     __loop_fail='0'
 
@@ -76,11 +78,11 @@ while read -r __filename; do
     done
 
     if [ "${__loop_fail}" == '0' ]; then
-        __output="./config_${__filename#*_}"
+        __output="./${__filename#*_}"
         echo "${__output}" >>'.gitignore'
         echo "${__contents}" >"${__output}"
     fi
 
-done < <(find . -maxdepth 1 -type f -iname 'partial_*.yaml')
+done < <(find . -maxdepth 1 -type f -iname 'partial_*')
 
 exit

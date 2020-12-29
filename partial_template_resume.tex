@@ -1,16 +1,6 @@
 \documentclass{article}
 
-\usepackage[letter, total={8.5in, 11in}]{geometry}
-\usepackage[nodisplayskipstretch]{setspace}
-\usepackage[sfdefault,condensed]{roboto}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{array}
-\usepackage{color}
-\usepackage{fancyhdr}
-\usepackage{fontawesome}
-\usepackage{graphicx}
-\usepackage{hyperref}
+{{packages_resume}}
 
 \urlstyle{same}
 
@@ -29,23 +19,7 @@
 \begin{document}
 \newgeometry{margin=2cm}
 
-\begin{minipage}[t]{0.7\textwidth}
-	\begin{flushleft}
-		\vfill \textbf{\Huge{\jvar{personal.name}}} \\ \hfill \vfill
-	\end{flushleft}
-\end{minipage}
-\begin{minipage}[t]{0.3\textwidth}
-	\begin{flushright}
-		\textit{
-			\setstretch{1.15}
-			\jvar{personal.phone} \hspace{1mm} \color{lightergray}\faPhoneSquare\color{black} \\
-			\href{mailto:\jvar{personal.email}}{\jvar{personal.email}} \hspace{1mm} \color{lightergray}\faEnvelope\color{black} \\
-			\href{\jvar{personal.url_personal}}{\jvar{personal.url_personal}} \hspace{1mm} \color{lightergray}\faExternalLinkSquare\color{black} \\
-			\href{\jvar{personal.url_github}}{\jvar{personal.url_github_abbr}} \hspace{1mm} \color{lightergray}\faGithubSquare\color{black} \\
-			\href{\jvar{personal.url_linkedin}}{\jvar{personal.url_linkedin_abbr}} \hspace{1mm} \color{lightergray}\faLinkedinSquare\color{black} \\
-		}
-	\end{flushright}
-\end{minipage}
+{{latex_personal}}
 
 \textbf{\textcolor{deepblue}{\uppercase{
 \jvar{education.school.label}

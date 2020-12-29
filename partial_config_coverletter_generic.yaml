@@ -1,0 +1,22 @@
+{{personal}}
+
+general:
+  company: Global Company
+  address:
+    - Address line 1
+    - Address line 2
+
+recipient:
+  name: Jane Doe
+  position: Head Employee
+  title: Ms.
+
+job:
+  title: Mechanical Engineering Internship
+  source: generic # [generic|web|indeed|custom] Where you saw the listing
+  interest: generic # [generic|custom]
+  custom:
+    source: > # Where you saw the listing, and what the position is
+      When I saw your booth at the career fair, and heard about your Mechanical Engineering Internship opportunities,
+    interest: > # How/why you 're interested in the position. 
+      my interest was immediately piqued.

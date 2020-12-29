@@ -20,9 +20,12 @@ done <<<'j2'
 ################################################################################
 
 while read -r __dirname; do
-    if ! [ -d "${__dirname}" ]; then
+    if [ -d "${__dirname}" ]; then
+        # rm -r "${__dirname}/"*
+        true
+    else
         mkdir "${__dirname}"
-    fi
+        fi
 done <<<"${__output_dir}"
 
 ################################################################################
@@ -30,7 +33,7 @@ done <<<"${__output_dir}"
 __latex_build() {
     pdflatex -synctex=1 -interaction=nonstopmode \
         -output-directory='./' ${1} >/dev/null 2>&1
-    find './' -maxdepth 1 -type f -not -name '*.pdf' -delete
+    find './' -maxdepth 1 -type f -not -name '*.pdf' -not -name '*.tex' -delete
 }
 
 __build() {
@@ -40,7 +43,7 @@ __build() {
     __output_template="${3}.${__extension}"
     __tmpdir="$(mktemp -d -p './')"
 
-    j2 --customize './.customize.py' "${__template}" "${__config}" -o "${__tmpdir}/${__output_template}"
+    j2 --undefined --customize './.customize.py' "${__template}" "${__config}" -o "${__tmpdir}/${__output_template}"
 
     cp -r 'assets' "${__tmpdir}/assets"
 
@@ -48,6 +51,8 @@ __build() {
         echo 'Temporary directory does not exist!'
         exit
     }
+
+    echo "Rendering: ${__output_template}"
 
     case "${__extension}" in
     tex)

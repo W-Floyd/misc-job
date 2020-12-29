@@ -1,2 +1,5 @@
+./config_coverletter_generic.yaml
 ./config_resume.yaml
 /output/
+./template_coverletter.tex
+./template_resume.tex
