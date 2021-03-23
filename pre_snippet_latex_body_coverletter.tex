@@ -1,0 +1,126 @@
+Dear
+
+<<>>
+
+\jblock{if recipient.name is defined}
+    \jblock{if recipient.title is defined}
+        \jvar{recipient.title}
+    \jblock{ endif }
+    \jvar{recipient.name}:
+\jblock{ else }
+    \jvar{recipient.position}:
+\jblock{ endif }\\
+
+<<n>>
+
+% First Paragraph - Introduction
+
+\jblock{ if job.whoami == 'custom' }
+    \jvar{job.custom.whoami}
+    <<>>
+\jblock{ elif job.whoami == 'generic' }
+    {{whoami}}
+    <<>>
+\jblock{endif}
+
+<<>>
+
+\jblock{ if job.source == 'web' }
+    When I saw your online listing for a \jvar{job.title} position,
+\jblock{ elif job.source == 'generic' }
+    When I saw your listing for a \jvar{job.title} position,
+\jblock{ elif job.source == 'indeed' }
+    When I saw your listing on Indeed for a \jvar{job.title} position,
+\jblock{ elif job.source == 'custom' }
+    \jvar{job.custom.source}
+    <<>>
+\jblock{ endif }
+
+<<>>
+
+\jblock{ if job.interest == 'custom' }
+    \jvar{job.custom.interest}
+    <<>>
+\jblock{ elif job.interest == 'generic' }
+    I was immediately interested.
+\jblock{endif}
+
+<<>>
+
+\jblock{ if job.fit == 'custom' }
+    \jvar{job.custom.fit}
+    <<>>
+\jblock{ elif job.fit == 'generic' }
+    I believe that I would be a good fit for this job
+    <<>>
+\jblock{endif}
+
+<<>>
+
+\jblock{ if job.fit_cause == 'none' }
+.
+\jblock{ elif job.fit_cause == 'focus_cs_mech' or job.fit_cause == 'focus_detail' }
+,
+\jblock{endif}
+
+<<>>
+
+\jblock{ if job.fit_cause == 'custom' }
+    \jvar{job.custom.fit_cause}
+\jblock{ elif job.fit_cause == 'generic' }
+    due to my interest and skill in the required fields.
+\jblock{ elif job.fit_cause == 'focus_cs_mech' }
+    especially due to my passion for applying computer technologies to mechanical systems.
+\jblock{ elif job.fit_cause == 'focus_detail' }
+    especially due to my persistance and attention to detail.
+\jblock{ elif job.fit_cause == 'focus_elec_mech' }
+    due to my experience and strong interest in the combination of electrical and mechanical technologies in order to create new solutions.
+\jblock{endif}
+
+<<>>
+
+\jblock{ if job.value_add == 'custom' }
+    \jvar{job.custom.value_add}
+\jblock{ elif job.value_add == 'generic' }
+    I believe that I have what it takes to contribute positively to the company.
+\jblock{ elif job.value_add == 'company' }
+    I believe that I could help further \jvar{ general.company.name }'s goal
+    <<>>
+    \jblock{ if general.company.purpose is defined}
+        <<>>
+        , \jvar{general.company.purpose}
+        <<>>
+    \jblock{endif}
+    <<>>
+    .
+\jblock{ elif job.value_add == 'skills' }
+    I believe that I would bring the skills and passion required to contribute positively to the company.
+\jblock{ elif job.value_add == 'company_skills' }
+    I believe that my skillsets and drive would help further \jvar{ general.company.name }'s goal
+    <<>>
+    \jblock{ if general.company.purpose is defined}
+        <<>>
+        , \jvar{general.company.purpose}
+        <<>>
+    \jblock{endif}
+    <<>>
+    .
+\jblock{endif}\\
+
+% Second Paragraph
+
+\jblock{for paragraph in body}
+    \jvar{paragraph}
+    <<>>
+    \jblock{ if loop.last }
+        Thank you for your consideration. I can be reached any time at {{reachme}}
+    \jblock{ endif }
+
+    \hfill\\
+\jblock{endfor}
+
+<<>>
+
+
+
+\jvar{personal.name}

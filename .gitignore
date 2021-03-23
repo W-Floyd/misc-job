@@ -1,5 +1,7 @@
 ./config_coverletter_generic.yaml
+./config_coverletter_vertech.yaml
 ./config_resume.yaml
 /output/
+./snippet_latex_body_coverletter.tex
 ./template_coverletter.tex
 ./template_resume.tex

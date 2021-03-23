@@ -25,7 +25,7 @@ while read -r __dirname; do
         true
     else
         mkdir "${__dirname}"
-        fi
+    fi
 done <<<"${__output_dir}"
 
 ################################################################################
@@ -77,7 +77,11 @@ __build() {
 
 while read -r __script; do
     "${__script}"
-done < <(find './' -maxdepth 1 -type f -not -name 'build.sh' -iname '*.sh')
+done < <(find './' -maxdepth 1 -type f -not -name 'build.sh' -iname '*.sh' | grep -Fxvf './script_list')
+
+while read -r __script; do
+    "${__script}"
+done <'./script_list'
 
 ################################################################################
 
@@ -114,7 +118,7 @@ fi
 
 while read -r __file; do
     rm "${__file}"
-done < '.gitignore'
+done <'.gitignore'
 
 cat '.gitignore_persist' >>'.gitignore'
 
