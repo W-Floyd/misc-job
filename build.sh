@@ -13,6 +13,7 @@ touch '.gitignore'
 while read -r __progname; do
     if ! which "${__progname}" &>/dev/null; then
         echo "Missing '${__progname}'"
+        cat '.gitignore_persist' >>'.gitignore'
         exit
     fi
 done <<<'j2'
@@ -65,7 +66,7 @@ __build() {
 
     while read -r __file; do
         mv "${__file}" "../${__output_dir}/${__file#\./}"
-    done < <(find './' -type f)
+    done < <(find . -type d -path './assets' -prune -o -type f -print)
 
     cd ../
 
