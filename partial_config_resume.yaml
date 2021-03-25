@@ -17,7 +17,11 @@ education:
     entries:
       - program: Mechanical Engineering, B.S. (BSME)
         school: LeTourneau University
+        gpa: 3.6
         date: Expected May 2022
+      - program: Master of Engineering (MEng)
+        school: LeTourneau University
+        date: Expected May 2023
 
 projects:
   label: Projects
@@ -61,6 +65,7 @@ skills:
         - Golang
         - Bash scripting
         - C++
+        - Octave
     - category: Software Development
       entries:
         - Linux system administration

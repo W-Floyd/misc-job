@@ -28,7 +28,7 @@
 	\jblock{for entry in education.school.entries}
 		\textcolor{lightgray}{\jvar{entry.date}} &
 			\textbf{\jvar{entry.program}} \linebreak
-			\textit{\jvar{entry.school}} \\\\ \hfill
+			\textit{\jvar{entry.school}} \jblock{if entry.gpa is defined} - \textbf{GPA \jvar{entry.gpa}} \jblock{ endif }& \hfill
 	\jblock{endfor}
 \end{tabular}
 
