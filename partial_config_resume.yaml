@@ -1,7 +1,7 @@
 {{personal}}
 
 work:
-  label: Work Experiences
+  label: Work Experience
   entries:
     - role: Machinist and Welder
       company: Rouge Machining
@@ -10,6 +10,23 @@ work:
       description: >
         Fabricated tube steel table frames, produced and worked on components for lead shields for the nuclear industry in Oak Ridge, TN.
         Designed, marketed, and manufactured accessories for mechanical keyboards during downtime.
+    - role: Freshman Project Design Team
+      company: LeTourneau University (LETU)
+      from: Fall 2020
+      to: continuing
+      description: >
+        Leads design project for the 2021 Introduction to Engineering Practices 1 (IEP 1) class.
+        Design involves PCB layout, SolidWorks modelling, and embedded microcontroller integration and programming.
+    - role: Teaching Assistant
+      company: LETU
+      from: Fall 2020
+      description: >
+        Teaching assistant for IEP 1 3D Printer Lab
+    - role: Grading Assistant
+      company: LETU
+      from: Fall 2020
+      description: >
+        Grading for IEP 1 Graphics Lab using SolidWorks
 
 education:
   school:
@@ -17,7 +34,7 @@ education:
     entries:
       - program: Mechanical Engineering, B.S. (BSME)
         school: LeTourneau University
-        gpa: 3.6
+        gpa: 3.58
         date: Expected May 2022
       - program: Master of Engineering (MEng)
         school: LeTourneau University
@@ -34,22 +51,9 @@ projects:
       date: Summer 2020
       description: >
         Designed a PCB to assemble a potentiometer bank for controlling a computer DAW.
-    - name: Freshman Project Design Team
-      date: Fall 2020 --- continuing
-      description: >
-        Designing project for the 2021 freshman engineering lab.
 
 leadership:
   label: Leadership Experience
-  entries:
-    - name: Grading Assistant
-      from: Fall 2020
-      description: >
-        Grading for IEP Graphics Lab using SolidWorks
-    - name: Teaching Assistant
-      from: Fall 2020
-      description: >
-        Teaching assistant for IEP Printer Lab
 
 skills:
   label: Technical Skills
@@ -65,13 +69,14 @@ skills:
         - Golang
         - Bash scripting
         - C++
-        - Octave
+        - Octave/MATLAB
+        - LabVIEW
     - category: Software Development
       entries:
         - Linux system administration
         - Git
         - Docker
-        - PlatformIO
+        - Arduino/PlatformIO
         - MQTT
     - category: Multimedia
       entries:
@@ -94,10 +99,10 @@ skills:
 activities:
   label: Activities and Achievements
   entries:
-    - title: Deans List
+    - title: Dean's List
       description: >
         Fall 2018
-    - title: Presidents List
+    - title: President's List
       description: >
         Spring 2020
     - title: Open Source

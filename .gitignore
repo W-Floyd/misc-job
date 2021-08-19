@@ -1,4 +1,5 @@
 ./config_coverletter_generic.yaml
+./config_coverletter_stemco.yaml
 ./config_coverletter_vertech.yaml
 ./config_resume.yaml
 /output/

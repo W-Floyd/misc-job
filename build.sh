@@ -44,7 +44,16 @@ __build() {
     __output_template="${3}.${__extension}"
     __tmpdir="$(mktemp -d -p './')"
 
-    j2 --undefined --customize './.customize.py' "${__template}" "${__config}" -o "${__tmpdir}/${__output_template}"
+    j2 --undefined --customize './.customize.py' "${__template}" "${__config}" | (
+        case "${__extension}" in
+        tex)
+            latexindent
+            ;;
+        *)
+            cat
+            ;;
+        esac
+    ) >"${__tmpdir}/${__output_template}"
 
     cp -r 'assets' "${__tmpdir}/assets"
 

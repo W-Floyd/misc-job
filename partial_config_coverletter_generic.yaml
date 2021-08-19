@@ -16,17 +16,17 @@ recipient:
 job:
   title: Mechanical Engineering Internship # Job title
   whoami: generic # [generic|custom]
-  source: indeed # [generic|web|indeed|custom]
+  source: indeed # [generic|web|indeed|heard|custom]
   interest: generic # [generic|custom] How you're interested
   fit: generic # [generic|custom] How you think you'd be as a fit for this job
-  fit_cause: focus_elec_mech # [generic|focus_cs_mech|focus_elec_mech|focus_detail|custom|none] Avoid generic and none! Choose one, add one, or strongly consider going with custom.
-  value_add: company_skills # [generic|company|skills|company_skills|custom|none]
+  fit_cause: custom # [generic|focus_cs_mech|focus_elec_mech|focus_detail|focus_hands_on|custom|none] Avoid generic and none! Choose one, add one, or strongly consider going with custom.
+  value_add: company_skills # [generic|company|company_goal|skills|company_skills_goal|custom|none]
   custom:
     whoami: 'I am a Junior majoring in Mechanical Engineering at LeTourneau University.' # Who you are, mostly major and school
     source: 'When I saw your booth at the career fair, and heard about your Mechanical Engineering Internship opportunities,' # Where you saw the listing, and what the position is
     interest: 'my interest was immediately piqued.' # How you're interested in the position. 
     fit: 'I believe that I would be a perfect fit for this position' # How you think you'd fit into the job
-    fit_cause: 'especially due to my experience living between multiple cultures.' # Why you think you'd be a good fit for this job. Begin with 'because', 'due to', etc. May include leading comma
+    fit_cause: 'especially due to my experience living between multiple cultures' # Why you think you'd be a good fit for this job. Begin with 'because', 'due to', etc. May include leading comma, but no trailing period
     value_add: 'I believe that I would be able to bring the skills needed to do a great job.'
 
 body:

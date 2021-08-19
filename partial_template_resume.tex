@@ -35,7 +35,13 @@
 \textbf{\textcolor{deepblue}{\uppercase{\jvar{work.label}}}} \\\\ \hfill
 \begin{tabular}{R{3.5cm} L{11.5cm}}
 	\jblock{for entry in work.entries}
-		\textcolor{lightgray}{\jvar{entry.from} --- \jvar{entry.to}} &
+		\textcolor{lightgray}{
+			\jblock{if entry.to is defined}
+				\jvar{entry.from} --- \jvar{entry.to}
+			\jblock{ else }
+				\jvar{entry.from}
+			\jblock{ endif }
+		} &
 			\textbf{\jvar{entry.role}}, \textit{\jvar{entry.company}} \linebreak
 			\jvar{entry.description} \\\\ \hfill
 	\jblock{endfor}
@@ -57,20 +63,22 @@
 	\jblock{endfor}
 \end{tabular}
 
-\textbf{\textcolor{deepblue}{\uppercase{\jvar{leadership.label}}}} \\\\ \hfill
-\begin{tabular}{R{3.5cm} L{11.5cm}}
-	\jblock{for entry in leadership.entries}
-		\textcolor{lightgray}{
-			\jblock{if entry.to is defined}
-				\jvar{entry.from} --- \jvar{entry.to}
-			\jblock{ else }
-				\jvar{entry.from}
-			\jblock{ endif }
-		} &
-			\textbf{\jvar{entry.name}} \linebreak
-			\jvar{entry.description} \\\\ \hfill
-	\jblock{endfor}
-\end{tabular}
+\jblock{if leadership.entries|count > 0}
+	\textbf{\textcolor{deepblue}{\uppercase{\jvar{leadership.label}}}} \\\\ \hfill
+	\begin{tabular}{R{3.5cm} L{11.5cm}}
+		\jblock{for entry in leadership.entries}
+			\textcolor{lightgray}{
+				\jblock{if entry.to is defined}
+					\jvar{entry.from} --- \jvar{entry.to}
+				\jblock{ else }
+					\jvar{entry.from}
+				\jblock{ endif }
+			} &
+				\textbf{\jvar{entry.name}} \linebreak
+				\jvar{entry.description} \\\\ \hfill
+		\jblock{endfor}
+	\end{tabular}
+\jblock{ endif }
 
 \textbf{\textcolor{deepblue}{\uppercase{\jvar{activities.label}}}} \\\\ \hfill
 \begin{tabular}{R{3.5cm} L{11.5cm}}

@@ -31,6 +31,8 @@ Dear
     When I saw your listing for a \jvar{job.title} position,
 \jblock{ elif job.source == 'indeed' }
     When I saw your listing on Indeed for a \jvar{job.title} position,
+\jblock{ elif job.source == 'heard' }
+    When I heard about the \jvar{job.title} position available at \jvar{ general.company.name },
 \jblock{ elif job.source == 'custom' }
     \jvar{job.custom.source}
     <<>>
@@ -51,7 +53,8 @@ Dear
     \jvar{job.custom.fit}
     <<>>
 \jblock{ elif job.fit == 'generic' }
-    I believe that I would be a good fit for this job
+    \jblock{ set internal_value_add_comma = 'true' }
+    I believe that I would be a good fit for this position
     <<>>
 \jblock{endif}
 
@@ -59,32 +62,61 @@ Dear
 
 \jblock{ if job.fit_cause == 'none' }
 .
-\jblock{ elif job.fit_cause == 'focus_cs_mech' or job.fit_cause == 'focus_detail' }
+\jblock{ elif job.fit_cause == 'focus_cs_mech' or job.fit_cause == 'focus_detail' or job.fit_cause == 'focus_hands_on' }
 ,
 \jblock{endif}
 
 <<>>
 
 \jblock{ if job.fit_cause == 'custom' }
+    \jblock{ set internal_value_add_comma = 'false' }
     \jvar{job.custom.fit_cause}
+    <<>>
 \jblock{ elif job.fit_cause == 'generic' }
-    due to my interest and skill in the required fields.
+    due to my interest and skill in the required fields
+    <<>>
 \jblock{ elif job.fit_cause == 'focus_cs_mech' }
-    especially due to my passion for applying computer technologies to mechanical systems.
+    especially due to my passion for applying computer technologies to mechanical systems
+    <<>>
 \jblock{ elif job.fit_cause == 'focus_detail' }
-    especially due to my persistance and attention to detail.
+    especially due to my persistance and attention to detail
+    <<>>
 \jblock{ elif job.fit_cause == 'focus_elec_mech' }
-    due to my experience and strong interest in the combination of electrical and mechanical technologies in order to create new solutions.
+    due to my experience and strong interest in the combination of electrical and mechanical technologies in order to create new solutions
+    <<>>
+\jblock{ elif job.fit_cause == 'focus_hands_on' }
+    especially due to my passion for hands on mechanical work
+    <<>>
 \jblock{endif}
+
+<<>>
+
+\jblock{ if internal_value_add_comma == 'true' }
+    <<>>
+    ,
+\jblock{ else }
+    <<>>
+    .
+\jblock{endif}
+
+<<>>
+
+\jblock{ if internal_value_add_comma == 'true' and job.value_add != 'custom' }
+and
+\jblock{ else }
+I believe
+\jblock{ endif }
 
 <<>>
 
 \jblock{ if job.value_add == 'custom' }
     \jvar{job.custom.value_add}
 \jblock{ elif job.value_add == 'generic' }
-    I believe that I have what it takes to contribute positively to the company.
+    that I have what it takes to contribute positively to the company.
 \jblock{ elif job.value_add == 'company' }
-    I believe that I could help further \jvar{ general.company.name }'s goal
+    that I have what it takes to contribute positively to \jvar{ general.company.name }.
+\jblock{ elif job.value_add == 'company_goal' }
+    that I could help further \jvar{ general.company.name }'s goal
     <<>>
     \jblock{ if general.company.purpose is defined}
         <<>>
@@ -94,9 +126,11 @@ Dear
     <<>>
     .
 \jblock{ elif job.value_add == 'skills' }
-    I believe that I would bring the skills and passion required to contribute positively to the company.
+    that I would bring the skills and passion required to contribute positively to the company.
 \jblock{ elif job.value_add == 'company_skills' }
-    I believe that my skillsets and drive would help further \jvar{ general.company.name }'s goal
+    that I would bring the skills and passion required to contribute positively to \jvar{ general.company.name }.
+\jblock{ elif job.value_add == 'company_skills_goal' }
+    that my skillsets and drive would help further \jvar{ general.company.name }'s goal
     <<>>
     \jblock{ if general.company.purpose is defined}
         <<>>
