@@ -9,7 +9,7 @@ recipient:
   position: Hiring Manager
 
 job:
-  title: Mechanical Engineering Internship # Job title
+  title: Entry Level Industrial Programmer # Job title
   whoami: generic # [generic|custom]
   source: custom # [generic|web|indeed|custom]
   interest: custom # [generic|custom] How you're interested
@@ -17,7 +17,7 @@ job:
   fit_cause: focus_cs_mech # [generic|focus_cs_mech|focus_elec_mech|focus_detail|custom|none] Avoid generic and none! Choose one, add one, or strongly consider going with custom.
   value_add: company_skills # [generic|company|skills|company_skills|custom|none]
   custom:
-    source: 'I saw the Vertech booth at my school career fair some time ago,' # Where you saw the listing, and what the position is
+    source: 'I saw the Vertech booth at my school career fair recently,' # Where you saw the listing, and what the position is
     interest: 'and am quite interested in what you have to offer.' # How you're interested in the position. 
     fit: 'I believe that I would be a perfect fit for this position' # How you think you'd fit into the job
     value_add: 'I believe that I would be able to bring the skills needed to do a great job.'
@@ -26,14 +26,14 @@ body:
   - >
     My experience with engineering projects both in and out of school has helped me develop an understanding of the thought process that must go into automating processes and solving problems. Personal projects have included:
     \begin{itemize}
+      \item writing a configurable software package to expose computer statistics and actions over MQTT, to be integrated into a larger automation system
       \item utilities for building digital assets (software, composited graphics), including dependency resolution
       \item cursory grading and classification of SolidWorks CAD files submitted by freshman students
       \item retrofitting 'dumb' devices with wireless controllers for optional wireless monitoring and control
       \item creating helper utilities to aid in tasks that may not be automated
-      \item writing a configurable software package to expose computer statistics and actions over MQTT, to be integrated into a larger automation system
     \end{itemize}
-    School projects have included acting as engineering lead when designing and building a simple pen plotter, and a remotely operated fishing caster for disabled users, both hardware and software.
+    School projects have included acting as engineering lead when designing and building a simple pen plotter, and a remotely operated fishing caster for disabled users, both hardware and software. 
   - >
-    Additionally, I have experience as a grading assistant, teaching assistant, and am currently working to design the engineering project for incoming freshmen. My interest in large scale automation comes from the time I spent time working in a pharmaceutical packaging facility. I have worked in a machine shop also, where I utilized welding, milling, and lathing to create parts as directed. I have designed and manufactured small batches of acrylic housings for niche keyboard models in my free time.
+    Additionally, I have experience as a grading assistant, teaching assistant, and designed the engineering project for the 2021 freshmen engineering class. My interest in large scale automation comes from the time I spent time working in a pharmaceutical packaging facility. I have worked in a machine shop also, where I utilized welding, milling, and lathing to create parts as directed. I have designed and manufactured small batches of acrylic housings for niche keyboard models in my free time.
   - >
-    I am excited to see how I might be able to learn from and help contribute through an internship at Vertech, and am confident that I would bring the skills and mindset needed to thrive to such an environment.
+    I am excited to see how I might be able to learn from and help contribute through a position at Vertech, and am confident that I would bring the skills and mindset needed to thrive to such an environment.

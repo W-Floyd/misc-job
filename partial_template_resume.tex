@@ -4,9 +4,9 @@
 
 \urlstyle{same}
 
-\definecolor{deepblue}{rgb}{.1,.2,.3}
-\definecolor{lightgray}{rgb}{.45,.45,.45}
-\definecolor{lightergray}{rgb}{.75,.75,.75}
+\definecolor{title}{rgb}{\jvar{theme.title}}
+\definecolor{accent}{rgb}{\jvar{theme.accent}}
+\definecolor{accentlight}{rgb}{\jvar{theme.accentlight}}
 
 \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
@@ -21,69 +21,95 @@
 
 {{latex_personal}}
 
-\textbf{\textcolor{deepblue}{\uppercase{
-\jvar{education.school.label}
-}}} \\\\ \hfill
+\textbf{\textcolor{title}{\uppercase{
+			\jvar{education.school.label}
+		}}} \jvar{theme.titlegap}\\  \hfill
 \begin{tabular}{R{3.5cm} L{11.5cm}}
 	\jblock{for entry in education.school.entries}
-		\textcolor{lightgray}{\jvar{entry.date}} &
-			\textbf{\jvar{entry.program}} \linebreak
-			\textit{\jvar{entry.school}} \jblock{if entry.gpa is defined} - \textbf{GPA \jvar{entry.gpa}} \jblock{ endif }& \hfill
+	\textcolor{accent}{\jvar{entry.date}}                                                                          &
+	\textbf{\jvar{entry.program}} \linebreak
+	\textit{\jvar{entry.school}} \jblock{if entry.gpa is defined} - \textbf{GPA \jvar{entry.gpa}} \jblock{ endif } & \hfill
 	\jblock{endfor}
 \end{tabular}
 
-\textbf{\textcolor{deepblue}{\uppercase{\jvar{work.label}}}} \\\\ \hfill
+\textbf{\textcolor{title}{\uppercase{\jvar{engineering.label}}}} \jvar{theme.titlegap}\\ \hfill
 \begin{tabular}{R{3.5cm} L{11.5cm}}
-	\jblock{for entry in work.entries}
-		\textcolor{lightgray}{
-			\jblock{if entry.to is defined}
-				\jvar{entry.from} --- \jvar{entry.to}
-			\jblock{ else }
-				\jvar{entry.from}
-			\jblock{ endif }
-		} &
-			\textbf{\jvar{entry.role}}, \textit{\jvar{entry.company}} \linebreak
-			\jvar{entry.description} \\\\ \hfill
+	\jblock{for entry in engineering.entries}
+	\textcolor{accent}{
+		\jblock{if entry.to is defined}
+		\jvar{entry.from} --- \jvar{entry.to}
+		\jblock{ else }
+		\jvar{entry.from}
+		\jblock{ endif }
+	} &
+	\textbf{\jvar{entry.role}}, \textit{\jvar{entry.company}} \linebreak
+	\jvar{entry.description} \\\\ \hfill
 	\jblock{endfor}
 \end{tabular}
 
-\textbf{\textcolor{deepblue}{\uppercase{\jvar{skills.label}}}} \\\\ \hfill
-\begin{tabular}{R{3.5cm} L{11.5cm}}
-	\jblock{for entry in skills.entries}
-		\textcolor{lightgray}{\jvar{entry.category}} & \textit{\jvar{entry.entries|join(', ')}} \\ \hfill
-	\jblock{endfor}
-\end{tabular}
-
-\textbf{\textcolor{deepblue}{\uppercase{\jvar{projects.label}}}} \\\\ \hfill
+\jblock{if projects.newpage is defined}
+\newpage
+\jblock{ endif }
+\textbf{\textcolor{title}{\uppercase{\jvar{projects.label}}}} \jvar{theme.titlegap}\\ \hfill
 \begin{tabular}{R{3.5cm} L{11.5cm}}
 	\jblock{for entry in projects.entries}
-		\textcolor{lightgray}{\jvar{entry.date}} &
-			\textbf{\jvar{entry.name}} \linebreak
-			\jvar{entry.description} \\\\ \hfill
+	\textcolor{accent}{\jvar{entry.date}} &
+	\jblock{if entry.url is defined}
+	\textbf{\href{\jvar{entry.url}}{\jvar{entry.name}}}
+	\jblock{ else }
+	\textbf{\jvar{entry.name}}
+	\jblock{ endif }
+	, \textit{\jvar{entry.location}} \linebreak
+	\jvar{entry.description}                \\\\ \hfill
+	\jblock{endfor}
+\end{tabular}
+
+\textbf{\textcolor{title}{\uppercase{\jvar{work.label}}}} \jvar{theme.titlegap}\\ \hfill
+\begin{tabular}{R{3.5cm} L{11.5cm}}
+	\jblock{for entry in work.entries}
+	\textcolor{accent}{
+		\jblock{if entry.to is defined}
+		\jvar{entry.from} --- \jvar{entry.to}
+		\jblock{ else }
+		\jvar{entry.from}
+		\jblock{ endif }
+	} &
+	\textbf{\jvar{entry.role}}, \textit{\jvar{entry.company}} \linebreak
+	\jvar{entry.description} \\\\ \hfill
+	\jblock{endfor}
+\end{tabular}
+
+\jblock{if skills.newpage is defined}
+\newpage
+\jblock{ endif }
+\textbf{\textcolor{title}{\uppercase{\jvar{skills.label}}}} \jvar{theme.titlegap}\\ \hfill
+\begin{tabular}{R{3.5cm} L{11.5cm}}
+	\jblock{for entry in skills.entries}
+	\textcolor{accent}{\jvar{entry.category}} & \textit{\jvar{entry.entries|join(', ')}} \\ \hfill
 	\jblock{endfor}
 \end{tabular}
 
 \jblock{if leadership.entries|count > 0}
-	\textbf{\textcolor{deepblue}{\uppercase{\jvar{leadership.label}}}} \\\\ \hfill
-	\begin{tabular}{R{3.5cm} L{11.5cm}}
-		\jblock{for entry in leadership.entries}
-			\textcolor{lightgray}{
-				\jblock{if entry.to is defined}
-					\jvar{entry.from} --- \jvar{entry.to}
-				\jblock{ else }
-					\jvar{entry.from}
-				\jblock{ endif }
-			} &
-				\textbf{\jvar{entry.name}} \linebreak
-				\jvar{entry.description} \\\\ \hfill
-		\jblock{endfor}
-	\end{tabular}
+\textbf{\textcolor{title}{\uppercase{\jvar{leadership.label}}}} \jvar{theme.titlegap}\\ \hfill
+\begin{tabular}{R{3.5cm} L{11.5cm}}
+	\jblock{for entry in leadership.entries}
+	\textcolor{accent}{
+		\jblock{if entry.to is defined}
+		\jvar{entry.from} --- \jvar{entry.to}
+		\jblock{ else }
+		\jvar{entry.from}
+		\jblock{ endif }
+	} &
+	\textbf{\jvar{entry.name}} \linebreak
+	\jvar{entry.description} \\\\ \hfill
+	\jblock{endfor}
+\end{tabular}
 \jblock{ endif }
 
-\textbf{\textcolor{deepblue}{\uppercase{\jvar{activities.label}}}} \\\\ \hfill
+\textbf{\textcolor{title}{\uppercase{\jvar{activities.label}}}} \jvar{theme.titlegap}\\ \hfill
 \begin{tabular}{R{3.5cm} L{11.5cm}}
 	\jblock{for entry in activities.entries}
-		\textcolor{lightgray}{\jvar{entry.title}} & \jvar{entry.description} \\ \hfill
+	\textcolor{accent}{\jvar{entry.title}} & \jvar{entry.description} \\ \hfill
 	\jblock{endfor}
 \end{tabular}
 

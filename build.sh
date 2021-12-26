@@ -95,15 +95,31 @@ done <'./script_list'
 
 ################################################################################
 
-__filenames="$(find . -maxdepth 1 -type f)"
-__filenames2="$(
-    while read -r __line; do
+__filenames="$(
+    find . -maxdepth 1 -type f | while read -r __line; do
         echo "${__line#\./*}"
-    done <<<"${__filenames}"
+    done
 )"
 
-__configs="$(grep -E '^config_.*\.yaml$' <<<"${__filenames2}")"
-__templates="$(grep -E '^template_.*' <<<"${__filenames2}")"
+__configs="$(grep -E '^config_.*\.yaml$' <<<"${__filenames}")"
+
+if [ "${#}" -gt 0 ]; then
+    __configs=''
+    until [ "${#}" == 0 ]; do
+        if [ -e "${1}" ]; then
+            __configs="$(sed -e 's|^\./||' -e 's|^partial_||' <<<"${1}")
+${__configs}"
+            echo "Using file '${1}'"
+        else
+            echo "File '${1}' does not exist!"
+            exit
+        fi
+        shift
+    done
+    __configs="$(sed -e '/^$/d' <<<"${__configs}")"
+fi
+
+__templates="$(grep -E '^template_.*' <<<"${__filenames}")"
 
 while read -r __config; do
     IFS="_" read -r -a __config_name_parts <<<"${__config%\.*}"
@@ -134,5 +150,12 @@ cat '.gitignore_persist' >>'.gitignore'
 
 sort '.gitignore' | uniq >'.gitignore2'
 mv '.gitignore2' '.gitignore'
+
+if [ -e './output/resume.pdf' ]; then
+    if [ -e './output/William Floyd - BSME.pdf' ]; then
+        rm './output/William Floyd - BSME.pdf'
+    fi
+    cp './output/resume.pdf' './output/William Floyd - BSME.pdf'
+fi
 
 exit

@@ -1,17 +1,17 @@
-\begin{minipage}[t]{0.5\textwidth}
+\begin{minipage}[t]{0.6\textwidth}
 	\begin{flushleft}
-		\vfill \textbf{\Huge{\jvar{personal.name}}} \\ \hfill \vfill
+		\vfill \textbf{\Huge{\jvar{personal.name}}}\huge{ (GPA: \jvar{education.school.entries[0].gpa})} \\ \hfill \vfill
 	\end{flushleft}
 \end{minipage}
-\begin{minipage}[t]{0.4\textwidth}
+\begin{minipage}[t]{0.3\textwidth}
 	\begin{flushright}
 		\textit{
 			\setstretch{1.15}
-			\jvar{personal.phone} \hspace{1mm} \color{lightergray}\faPhoneSquare\color{black} \\
-			\href{mailto:\jvar{personal.email}}{\jvar{personal.email}} \hspace{1mm} \color{lightergray}\faEnvelope\color{black} \\
-			\href{\jvar{personal.url_personal}}{\jvar{personal.url_personal}} \hspace{1mm} \color{lightergray}\faExternalLinkSquare\color{black} \\
-			\href{\jvar{personal.url_github}}{\jvar{personal.url_github_abbr}} \hspace{1mm} \color{lightergray}\faGithubSquare\color{black} \\
-			\href{\jvar{personal.url_linkedin}}{\jvar{personal.url_linkedin_abbr}} \hspace{1mm} \color{lightergray}\faLinkedinSquare\color{black} \\
+			\href{tel:\jvar{personal.phone}}{\jvar{personal.phone}} \hspace{1mm} \color{accentlight}\faPhoneSquare\color{black} \\
+			\href{mailto:\jvar{personal.email}}{\jvar{personal.email}} \hspace{1mm} \color{accentlight}\faEnvelope\color{black} \\
+			\href{\jvar{personal.url_personal}}{\jvar{personal.url_personal}} \hspace{1mm} \color{accentlight}\faExternalLinkSquare\color{black} \\
+			\href{\jvar{personal.url_github}}{\jvar{personal.url_github_abbr}} \hspace{1mm} \color{accentlight}\faGithubSquare\color{black} \\
+			\href{\jvar{personal.url_linkedin}}{\jvar{personal.url_linkedin_abbr}} \hspace{1mm} \color{accentlight}\faLinkedinSquare\color{black} \\
 		}
 	\end{flushright}
 \end{minipage}

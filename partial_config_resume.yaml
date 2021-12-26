@@ -1,8 +1,42 @@
 {{personal}}
 
+theme:
+  accent: 0,0,0
+  accentlight: 0,0,0
+  title: 0,0,0
+  titlegap: \smallskip
+
+
+engineering:
+  label: Engineering Experience
+  entries:
+    - role: Freshman Project Design Team
+      company: LeTourneau University (LETU)
+      from: Fall 2020
+      to: Fall 2021
+      description: >
+        Led design project for the 2021 Introduction to Engineering Practices 1 (IEP 1) class.
+        Design involved PCB layout, SolidWorks modelling, and Arduino integration and programming.
+        Production run of 185 units were sourced and kits collected.
+    - role: LEGRange (Senior Design)
+      company: LETU
+      from: Fall 2021
+      to: Spring 2022
+      description: >
+        Participating in mechanical design for electronics housing, and SDR development and modification for GPS transmission purposes (using C++).
+        The software interprets sampled radio signals and reads GPS data.
+        Tasking includes team collaboration to understand a large existing codebase, and adapting said codebase to allow signal generation and mixing.
+
+
 work:
   label: Work Experience
   entries:
+    - role: Teaching Assistant
+      company: LETU
+      from: Fall 2020
+      to: Fall 2021
+      description: >
+        Teaching assistant for IEP 1 Lab, involving educating students in basic basic assembly techniques and diagnosing and solving problems that appeared during assembly, including troubleshooting FDM 3D printers.
     - role: Machinist and Welder
       company: Rouge Machining
       from: March 2018
@@ -10,23 +44,11 @@ work:
       description: >
         Fabricated tube steel table frames, produced and worked on components for lead shields for the nuclear industry in Oak Ridge, TN.
         Designed, marketed, and manufactured accessories for mechanical keyboards during downtime.
-    - role: Freshman Project Design Team
-      company: LeTourneau University (LETU)
-      from: Fall 2020
-      to: continuing
-      description: >
-        Leads design project for the 2021 Introduction to Engineering Practices 1 (IEP 1) class.
-        Design involves PCB layout, SolidWorks modelling, and embedded microcontroller integration and programming.
-    - role: Teaching Assistant
-      company: LETU
-      from: Fall 2020
-      description: >
-        Teaching assistant for IEP 1 3D Printer Lab
     - role: Grading Assistant
       company: LETU
       from: Fall 2020
       description: >
-        Grading for IEP 1 Graphics Lab using SolidWorks
+        Grading for IEP 1 Graphics Lab using SolidWorks.
 
 education:
   school:
@@ -34,28 +56,44 @@ education:
     entries:
       - program: Mechanical Engineering, B.S. (BSME)
         school: LeTourneau University
-        gpa: 3.58
-        date: Expected May 2022
-      - program: Master of Engineering (MEng)
-        school: LeTourneau University
-        date: Expected May 2023
+        gpa: 3.6/4.0
+        date: May 2022
+      # - program: Master of Engineering (MEng)
+      #   school: LeTourneau University
+      #   date: May 2023
 
 projects:
   label: Projects
   entries:
+    - name: Home Assistant MQTT IOT
+      location: Personal
+      url: https://github.com/W-Floyd/ha-mqtt-iot
+      description: >
+        Open source software that provides a MQTT client to interface with HomeAssistant, a home automation software suite.
+        This tool allows creating arbitrary sensors, switches, lights, etc. based on locally run commands, or builtin routines.
+        Programmed in Golang.
+      date: October 2020 --- continuing
     - name: ClickBait
+      location: LETU
+      url: https://notmy.space/projects/clickbait/
       description: >
         Led an engineering project to create a battery powered automatic fishing caster intended for disabled users, as part of Project Management, Design, and Entrepreneurship.
       date: Fall 2019
-    - name: MIDIMixer
-      date: Summer 2020
+    - name: Pen Plotter
+      location: LETU
       description: >
-        Designed a PCB to assemble a potentiometer bank for controlling a computer DAW.
+        For IEP 2 class, designed from scratch a low cost (\$20) CNC pen plotter, including 3D printed hardware and custom GCode parser.
+      date: Spring 2019
+    # - name: MIDIMixer
+    #   date: Summer 2020
+    #   description: >
+    #     Designed a PCB to assemble a potentiometer bank for controlling a computer DAW.
 
 leadership:
   label: Leadership Experience
 
 skills:
+  newpage: true
   label: Technical Skills
   entries:
     - category: CAD/3D Modeling
@@ -94,7 +132,7 @@ skills:
         - 3D Printing (FDM)
         - Soldering
         - Electronics Design
-        - PCB layout
+        - Basic PCB layout
 
 activities:
   label: Activities and Achievements
@@ -108,7 +146,3 @@ activities:
     - title: Open Source
       description: >
         Participates in various open source projects, including software and graphic design
-
-misc:
-  footnote: ""
-  language: english
