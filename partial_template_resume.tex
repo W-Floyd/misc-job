@@ -42,7 +42,12 @@
 		\jvar{entry.from}
 		\jblock{ endif }
 	} &
-	\textbf{\jvar{entry.role}}, \textit{\jvar{entry.company}} \linebreak
+	\jblock{if entry.url is defined}
+	\textbf{\href{\jvar{entry.url}}{\jvar{entry.role}}},
+	\jblock{ else }
+	\textbf{\jvar{entry.role}},
+	\jblock{ endif }
+	\textit{\jvar{entry.company}} \linebreak
 	\jvar{entry.description} \\\\ \hfill
 	\jblock{endfor}
 \end{tabular}
@@ -55,11 +60,11 @@
 	\jblock{for entry in projects.entries}
 	\textcolor{accent}{\jvar{entry.date}} &
 	\jblock{if entry.url is defined}
-	\textbf{\href{\jvar{entry.url}}{\jvar{entry.name}}}
+	\textbf{\href{\jvar{entry.url}}{\jvar{entry.name}}},
 	\jblock{ else }
-	\textbf{\jvar{entry.name}}
+	\textbf{\jvar{entry.name}},
 	\jblock{ endif }
-	, \textit{\jvar{entry.location}} \linebreak
+	\textit{\jvar{entry.location}} \linebreak
 	\jvar{entry.description}                \\\\ \hfill
 	\jblock{endfor}
 \end{tabular}
