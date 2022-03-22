@@ -1,0 +1,9 @@
+services:
+  web:
+    build: .
+    volumes:
+      - .:/build/
+      - cache:/root/.cache/Tectonic/
+volumes:
+  cache: {}
+

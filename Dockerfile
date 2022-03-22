@@ -21,14 +21,6 @@ RUN tar -xf 'tectonic.tar.gz'
 RUN rm 'tectonic.tar.gz'
 RUN mv 'tectonic' '/usr/bin/tectonic'
 
-RUN apk add --update --no-cache ttf-font-awesome
-
-RUN bash ./docker/community.sh
-RUN apk add --update --no-cache tlmgr
-RUN tlmgr update --self
-RUN tlmgr update --all
-RUN tlmgr install latexindent
-
 WORKDIR /build/
 
 ENV TERM xterm-256color
