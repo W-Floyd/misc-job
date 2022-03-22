@@ -31,10 +31,28 @@ done <<<"${__output_dir}"
 
 ################################################################################
 
+__cleanup() {
+    if [ -d '__pycache__' ]; then
+        rm -r '__pycache__'
+    fi
+
+    while read -r __file; do
+        rm "${__file}"
+    done <'.gitignore'
+
+    cat '.gitignore_persist' >>'.gitignore'
+
+    sort '.gitignore' | uniq >'.gitignore2'
+    mv '.gitignore2' '.gitignore'
+
+    find . | while read -r __file; do
+        chown '1000:1000' "${__file}"
+    done
+
+}
+
 __latex_build() {
-    pdflatex -synctex=1 -interaction=nonstopmode \
-        -output-directory='./' ${1} >/dev/null 2>&1
-    find './' -maxdepth 1 -type f -not -name '*.pdf' -not -name '*.tex' -delete
+    tectonic --color 'always' --outdir './' ${1}
 }
 
 __build() {
@@ -44,16 +62,7 @@ __build() {
     __output_template="${3}.${__extension}"
     __tmpdir="$(mktemp -d -p './')"
 
-    j2 --undefined --customize './.customize.py' "${__template}" "${__config}" | (
-        case "${__extension}" in
-        tex)
-            latexindent
-            ;;
-        *)
-            cat
-            ;;
-        esac
-    ) >"${__tmpdir}/${__output_template}"
+    j2 --undefined --customize './.customize.py' "${__template}" "${__config}" >"${__tmpdir}/${__output_template}"
 
     cp -r 'assets' "${__tmpdir}/assets"
 
@@ -112,6 +121,7 @@ ${__configs}"
             echo "Using file '${1}'"
         else
             echo "File '${1}' does not exist!"
+            __cleanup
             exit
         fi
         shift
@@ -138,24 +148,13 @@ while read -r __config; do
     done <<<"${__templates}"
 done <<<"${__configs}"
 
-if [ -d '__pycache__' ]; then
-    rm -r '__pycache__'
-fi
-
-while read -r __file; do
-    rm "${__file}"
-done <'.gitignore'
-
-cat '.gitignore_persist' >>'.gitignore'
-
-sort '.gitignore' | uniq >'.gitignore2'
-mv '.gitignore2' '.gitignore'
-
 if [ -e './output/resume.pdf' ]; then
     if [ -e './output/William Floyd - BSME.pdf' ]; then
         rm './output/William Floyd - BSME.pdf'
     fi
     cp './output/resume.pdf' './output/William Floyd - BSME.pdf'
 fi
+
+__cleanup
 
 exit

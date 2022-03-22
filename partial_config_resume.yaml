@@ -5,6 +5,7 @@ theme:
   accentlight: 0,0,0
   title: 0,0,0
   titlegap: \smallskip
+  icons: false
 
 
 engineering:
