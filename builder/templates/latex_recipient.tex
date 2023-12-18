@@ -1,0 +1,14 @@
+\begin{addmargin}[0pt]{0pt}
+\noindent
+ {{ if .recipient.name }} 
+	 {{ .recipient.name }} \\
+ {{- end -}}  
+ {{ if .recipient.position }} 
+	 {{ .recipient.position }} \\
+ {{- end -}}  
+ {{ .general.company.name }} \\
+ {{ range $line := .general.address }} 
+	 {{ .line }} \\
+ {{- end -}}  
+\end{addmargin}
+\hfill

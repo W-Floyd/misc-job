@@ -1,9 +1,6 @@
-./config_coverletter_generic.yaml
-./config_coverletter_stemco.yaml
-./config_coverletter_vertech.yaml
 ./config_resume.yaml
-./snippet_latex_body_coverletter.tex
 ./template_coverletter.tex
 ./template_resume.tex
 /indent.log
 /output/
+/builder/builder

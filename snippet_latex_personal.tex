@@ -1,35 +1,41 @@
-\begin{minipage}[t]{0.6\textwidth}
+\begin{minipage}[t]{0.55\textwidth}
 	\begin{flushleft}
-		\vfill \textbf{\Huge{\jvar{personal.name}}}\LARGE{ (GPA: \jvar{education.school.entries[0].gpa})} \\ \hfill \vfill
+		\vfill \textbf{\Huge{\jvar{personal.name}}} \\ \hfill \vfill
 	\end{flushleft}
 \end{minipage}
+\jblock{if theme.qrcode is true}
 \begin{minipage}[t]{0.3\textwidth}
 	\begin{flushright}
+\jblock{ endif }
+\jblock{if theme.qrcode is false}
+\begin{minipage}[t]{0.40\textwidth}
+	\begin{flushright}
+\jblock{ endif }
 		\textit{
 			\setstretch{1.15}
 			\href{tel:\jvar{personal.phone}}{\jvar{personal.phone}} \hspace{1mm}
 			\jblock{if theme.icons is true}
-			\color{accentlight}\faIcon{PhoneSquare}\color{black}
+			\color{accentlight}\faIcon{phone-square}\color{black}
 			\jblock{ endif }
 			\\
 			\href{mailto:\jvar{personal.email}}{\jvar{personal.email}} \hspace{1mm}
 			\jblock{if theme.icons is true}
-			\color{accentlight}\faIcon{Envelope}\color{black}
+			\color{accentlight}\faIcon{envelope}\color{black}
 			\jblock{ endif }
 			\\
 			\href{\jvar{personal.url_personal}}{\jvar{personal.url_personal}} \hspace{1mm} 
 			\jblock{if theme.icons is true}
-			\color{accentlight}\faIcon{ExternalLinkSquare}\color{black}
+			\color{accentlight}\faIcon{external-link-square-alt}\color{black}
 			\jblock{ endif }
 			\\
 			\href{\jvar{personal.url_github}}{\jvar{personal.url_github_abbr}} \hspace{1mm}
 			\jblock{if theme.icons is true}
-			\color{accentlight}\faIcon{GithubSquare}\color{black}
+			\color{accentlight}\faIcon{github-square}\color{black}
 			\jblock{ endif }
 			\\
 			\href{\jvar{personal.url_linkedin}}{\jvar{personal.url_linkedin_abbr}} \hspace{1mm} 
 			\jblock{if theme.icons is true}
-			\color{accentlight}\faIcon{LinkedinSquare}\color{black}
+			\color{accentlight}\faIcon{linkedin}\color{black}
 			\jblock{ endif }
 			\\
 		}
@@ -38,8 +44,12 @@
 \jblock{if theme.icons is false}
 \color{accentlight}\vline\color{black}
 \jblock{ endif }
-\begin{minipage}[t]{0.1\textwidth}
+\jblock{if theme.qrcode is true}
+\begin{minipage}[t]{0.15\textwidth}
 	\vfill
 	\hfill
-	\qrcode[height=0.625in]{\jvar{personal.url_personal}}
+	\qrcode[height=0.70in]{\jvar{personal.url_personal}}
+	\hfill
+	\vfill
 \end{minipage}
+\jblock{ endif }

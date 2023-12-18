@@ -1,6 +1,10 @@
-{{personal}}
+{{ template "personal.yaml" . }}
+
+process: false
 
 target: template_resume.tex
+
+output_name: Resume
 
 theme:
   accent: 0,0,0

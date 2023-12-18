@@ -1,0 +1,204 @@
+\documentclass{article}
+
+\usepackage[letterpaper, total={8.5in, 11in}]{geometry}
+\usepackage[nodisplayskipstretch]{setspace}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{array}
+\usepackage{color}
+\usepackage{fancyhdr}
+\usepackage{fontawesome5}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{scrextend}
+\usepackage[sfdefault,condensed]{roboto}
+\usepackage{qrcode}
+
+\usepackage{ltablex}
+
+\urlstyle{same}
+
+\definecolor{title}{rgb}{ 0,0,0 }
+\definecolor{accent}{rgb}{ 0,0,0 }
+\definecolor{accentlight}{rgb}{ 0,0,0 }
+
+\newcolumntype{L}{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}X}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+
+\begin{document}
+\newgeometry{margin=2.25cm}
+
+\setlength\LTpre{0pt}
+\setlength{\LTpost}{0pt}
+
+\begin{minipage}[t]{0.55\textwidth}
+	\begin{flushleft}
+		\vfill \textbf{\Huge{ William Floyd }} \\ \hfill \vfill
+	\end{flushleft}
+\end{minipage}
+  
+  
+\begin{minipage}[t]{0.40\textwidth}
+	\begin{flushright}
+  
+		\textit{
+			\setstretch{1.15}
+			\href{tel: +1 (865) 244-9330 }{ +1 (865) 244-9330 } \hspace{1mm}
+			  
+			\color{accentlight}\faIcon{phone-square}\color{black}
+			  
+			\\
+			\href{mailto: wfloyd@notmy.space }{ wfloyd@notmy.space } \hspace{1mm}
+			  
+			\color{accentlight}\faIcon{envelope}\color{black}
+			  
+			\\
+			\href{ https://notmy.space }{ https://notmy.space } \hspace{1mm} 
+			  
+			\color{accentlight}\faIcon{external-link-square-alt}\color{black}
+			  
+			\\
+			\href{ https://github.com/W-Floyd }{ github.com/W-Floyd } \hspace{1mm}
+			  
+			\color{accentlight}\faIcon{github-square}\color{black}
+			  
+			\\
+			\href{ https://linkedin.com/in/william-floyd }{ linkedin.com/in/william-floyd } \hspace{1mm} 
+			  
+			\color{accentlight}\faIcon{linkedin}\color{black}
+			  
+			\\
+		}
+	\end{flushright}
+\end{minipage}
+  
+  
+
+\textbf{\textcolor{title}{\uppercase{
+			 Education 
+		}}}  \medskip \\  \hfill
+\begin{tabularx}{\textwidth}{R{3.5cm} L}
+  
+\textcolor{accent}{
+      
+     May 2022 
+      
+} &
+\textbf{ Mechanical Engineering, B.S. (BSME) } - \textit{ LeTourneau University } \linebreak
+GPA:  3.54/4.0 (Cum Laude, Dean's List Fall 2018, President's List Spring 2020)  \\\\ \hfill
+  
+\end{tabularx}
+
+ 
+
+  
+\textbf{\textcolor{title}{\uppercase{ Engineering Experience }}}  \medskip \\ \hfill
+\begin{tabularx}{\textwidth}{R{3.5cm} L}
+	  
+\end{tabularx}
+  
+
+  
+\textbf{\textcolor{title}{\uppercase{ Projects }}}  \medskip \\ \hfill
+\begin{tabularx}{\textwidth}{R{3.5cm} L}
+	  
+	\textcolor{accent}{
+		  
+		 Fall 2021  ---  Spring 2022 
+		  
+	} &
+	  
+	\textbf{\href{ https://letu.edu/academics/engineering/nathan_green_senior_design_team.html }{ LEGRange (Senior Design) }},
+	  
+	\textit{ <no value> } \linebreak
+	 Participating in mechanical design for electronics housing, and SDR development and modification for GPS transmission purposes (using C++). Existing software interprets sampled radio signals and reads GPS data. Primary tasking involves implementing rogue signal generation in software given timing and performance constraints.
+                 \\\\ \hfill
+	  
+	\textcolor{accent}{
+		  
+		 Fall 2020  ---  Fall 2021 
+		  
+	} &
+	  
+	\textbf{ Freshman Project Design Team },
+	  
+	\textit{ LeTourneau University (LETU) } \linebreak
+	 Led design project for the 2021 Introduction to Engineering Practices 1 (IEP 1) class. Design involved PCB layout, SolidWorks modelling, and Arduino integration and programming. Production run of 185 units were sourced and kits collected.
+                 \\\\ \hfill
+	  
+	\textcolor{accent}{
+		  
+		 October 2020  ---  Present 
+		  
+	} &
+	  
+	\textbf{\href{ https://github.com/W-Floyd/ha-mqtt-iot }{ Home Assistant MQTT IOT }},
+	  
+	\textit{ Personal } \linebreak
+	 Open source software that provides a MQTT client to interface with HomeAssistant, a home automation software suite. This tool allows creating arbitrary sensors, switches, lights, etc. based on locally run commands, or builtin routines. Programmed in Golang.
+                 \\\\ \hfill
+	  
+	\textcolor{accent}{
+		  
+		 Fall 2019 
+		  
+	} &
+	  
+	\textbf{\href{ https://notmy.space/2020/03/clickbait/ }{ ClickBait }},
+	  
+	\textit{ LETU } \linebreak
+	 Led an engineering project to create a battery powered automatic fishing caster intended for disabled users, as part of Project Management, Design, and Entrepreneurship.
+                 \\\\ \hfill
+	  
+	\textcolor{accent}{
+		  
+		 Spring 2019 
+		  
+	} &
+	  
+	\textbf{\href{ https://notmy.space/2021/12/pen-plotter/ }{ Pen Plotter }},
+	  
+	\textit{ LETU } \linebreak
+	 For IEP 2 class, designed from scratch a low cost (\$20) CNC pen plotter, including 3D printed hardware and custom GCode parser.
+                 \\\\ \hfill
+	  
+\end{tabularx}
+
+ 
+ \textbf{\textcolor{title}{\uppercase{ Technical Skills }}}  \medskip \\ \hfill
+ \begin{tabularx}{\textwidth}{R{3.5cm} L}
+	   
+	 \textcolor{accent}{ Office } & \textit{ Microsoft Office suite, Outlook macros, Outlook rules, Autohotkey macros } \\ \hfill
+	   
+	 \textcolor{accent}{ CAD/3D Modeling } & \textit{ SolidWorks, OpenSCAD, Blender, KiCAD } \\ \hfill
+	   
+	 \textcolor{accent}{ Programming } & \textit{ Golang, Bash scripting, SQL queries, C++, Octave/MATLAB, LabVIEW } \\ \hfill
+	   
+	 \textcolor{accent}{ Software Development } & \textit{ Git, Arduino/PlatformIO, MQTT, Appsmith, Airtable/NocoDB } \\ \hfill
+	   
+	 \textcolor{accent}{ Linux Systems } & \textit{ System administration, Debian, Arch, Docker, Package maintenance } \\ \hfill
+	   
+	 \textcolor{accent}{ Multimedia } & \textit{ Inkscape, Photoshop, After Effects, LaTeX } \\ \hfill
+	   
+	 \textcolor{accent}{ Fabrication } & \textit{ Welding (MIG, stick), Lathing, Milling } \\ \hfill
+	   
+	 \textcolor{accent}{ Prototyping } & \textit{ 3D Printing (FDM), Soldering, Electronics Design, Basic PCB layout } \\ \hfill
+	   
+ \end{tabularx}
+ 
+  
+ \textbf{\textcolor{title}{\uppercase{ Leadership Experience }}}  \medskip \\ \hfill
+ \begin{tabularx}{\textwidth}{R{3.5cm} L}
+	   
+ \end{tabularx}
+   
+ 
+   
+ 
+ \end{document}
+ 

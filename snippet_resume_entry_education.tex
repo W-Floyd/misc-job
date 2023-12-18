@@ -1,0 +1,11 @@
+\jblock{for entry in education.school.entries}
+\textcolor{accent}{
+    \jblock{if entry.to is defined}
+    \jvar{entry.from} --- \jvar{entry.to}
+    \jblock{ else }
+    \jvar{entry.from}
+    \jblock{ endif }
+} &
+\textbf{\jvar{entry.program}} - \textit{\jvar{entry.school}} \linebreak
+GPA: \jvar{entry.gpa} \\\\ \hfill
+\jblock{endfor}

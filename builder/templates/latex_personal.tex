@@ -1,0 +1,40 @@
+\begin{minipage}{0.5\textwidth}
+	\begin{flushleft}
+		\textbf{\Huge{ {{- .personal.name -}} }} \\ \hfill \vfill
+	\end{flushleft}
+\end{minipage}
+\begin{minipage}{
+	{{- if .theme.qrcode -}}
+	0.3
+	{{- else -}}
+	0.45
+	{{- end -}}
+\textwidth}
+	\begin{flushright}
+		\textit{
+			\href{tel: {{- .personal.phone -}} }{ {{- .personal.phone -}} } \hspace{1mm}
+			{{- if .theme.icons -}} \color{accentlight}\faIcon{phone-square}\color{black} {{- end -}}  \\
+			\href{mailto: {{- .personal.email -}} }{ {{- .personal.email -}} } \hspace{1mm}
+			{{- if .theme.icons -}} \color{accentlight}\faIcon{envelope}\color{black} {{- end -}}  \\
+			\href{ {{- .personal.url_personal -}} }{ {{- .personal.url_personal -}} } \hspace{1mm}
+			{{- if .theme.icons -}} \color{accentlight}\faIcon{external-link-square-alt}\color{black} {{- end -}}  \\
+			\href{ {{- .personal.url_github -}} }{ {{- .personal.url_github_abbr -}} } \hspace{1mm}
+			{{- if .theme.icons -}} \color{accentlight}\faIcon{github-square}\color{black} {{- end -}}  \\
+			\href{ {{- .personal.url_linkedin -}} }{ {{- .personal.url_linkedin_abbr -}} } \hspace{1mm}
+			{{- if .theme.icons -}} \color{accentlight}\faIcon{linkedin}\color{black} {{- end -}}  \\
+		}
+	\end{flushright}
+\end{minipage}
+{{ if not .theme.icons -}}
+	\color{accentlight}\vline\color{black}
+{{- end -}}
+{{ if .theme.qrcode -}} 
+	\begin{minipage}{0.15\textwidth}
+	\vfill
+	\hfill
+	\qrcode[height=0.70in]{ {{- .personal.url_personal -}} }
+	\hfill
+	\vfill
+	\end{minipage}
+{{- end }}
+

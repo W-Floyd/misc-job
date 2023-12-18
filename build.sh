@@ -94,9 +94,9 @@ __build() {
 
 ################################################################################
 
-while read -r __script; do
-    "${__script}"
-done < <(find './' -maxdepth 1 -type f -not -name 'build.sh' -iname '*.sh' | grep -Fxvf './script_list')
+# while read -r __script; do
+#     "${__script}"
+# done < <(find './' -maxdepth 1 -type f -not -name 'build.sh' -iname '*.sh' | grep -Fxvf './script_list')
 
 while read -r __script; do
     "${__script}"
@@ -149,10 +149,10 @@ while read -r __config; do
 done <<<"${__configs}"
 
 if [ -e './output/resume.pdf' ]; then
-    if [ -e './output/William Floyd - BSME.pdf' ]; then
-        rm './output/William Floyd - BSME.pdf'
+    if [ -e './output/William Floyd.pdf' ]; then
+        rm './output/William Floyd.pdf'
     fi
-    cp './output/resume.pdf' './output/William Floyd - BSME.pdf'
+    cp './output/resume.pdf' './output/William Floyd.pdf'
 fi
 
 __cleanup
