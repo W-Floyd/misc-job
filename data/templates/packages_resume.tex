@@ -1,4 +1,11 @@
 {{- template "packages_generic.tex" . -}}
+
+\newcount\XeTeXtracingfonts
+% TODO: Check the following for status (in ascending order of specificity):
+% - https://github.com/tectonic-typesetting/tectonic/issues/924
+% - https://github.com/tectonic-typesetting/tectonic-texlive-bundles/pull/14
+% - https://github.com/tectonic-typesetting/tectonic/pull/1121
+
 \usepackage[sfdefault,condensed]{roboto}
 \usepackage{qrcode}
 \usepackage{ltablex}
