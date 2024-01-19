@@ -5,6 +5,8 @@ services:
       - ./data/:/build/data/
       - ./output:/build/output/
       - cache:/root/.cache/Tectonic/
+    environment:
+      - BUILDER_PRINT_TO_STDOUT=false
 volumes:
   cache: {}
 
