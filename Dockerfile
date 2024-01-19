@@ -1,8 +1,17 @@
+FROM golang:1-alpine
+
+WORKDIR /build
+
+COPY builder/ .
+
+RUN --mount=type=cache,target=/go/pkg/mod --mount=type=cache,target=/root/.cache/go-build go build -o main .
+
 FROM alpine:latest
 
-ENV TECTONIC_VERSION=0.14.1
-
 WORKDIR /build/
+
+ENV TECTONIC_VERSION=0.14.1
+ENV TERM xterm-256color
 
 RUN apk add --update --no-cache bash wget
 
@@ -11,8 +20,7 @@ RUN tar -xf 'tectonic.tar.gz'
 RUN rm 'tectonic.tar.gz'
 RUN mv 'tectonic' '/usr/bin/tectonic'
 
-WORKDIR /build/
+COPY ./builder ./builder
+COPY --from=0 /build/main ./builder/builder
 
-ENV TERM xterm-256color
-
-ENTRYPOINT ["bash", "build.sh"]
+ENTRYPOINT ["bash", "./builder/build.sh"]

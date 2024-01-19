@@ -2,7 +2,8 @@ services:
   web:
     build: .
     volumes:
-      - .:/build/
+      - ./data/:/build/data/
+      - ./output:/build/output/
       - cache:/root/.cache/Tectonic/
 volumes:
   cache: {}

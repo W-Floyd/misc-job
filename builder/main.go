@@ -17,10 +17,10 @@ import (
 var configData map[string]interface{} = make(map[string]interface{})
 
 type Specification struct {
-	templateDir string `default:"./templates"`
-	targetDir   string `default:"./targets"`
-	configDir   string `default:"./configs"`
-	outputDir   string `default:"./output"`
+	TemplateDir string `default:"./data/templates"`
+	TargetDir   string `default:"./data/targets"`
+	ConfigDir   string `default:"./data/configs"`
+	OutputDir   string `default:"./output"`
 }
 
 func main() {
@@ -51,14 +51,14 @@ func main() {
 
 	templates := template.New("master").Funcs(funcs)
 
-	err = filepath.Walk(s.templateDir, func(path string, info os.FileInfo, err error) error {
+	err = filepath.Walk(s.TemplateDir, func(path string, info os.FileInfo, err error) error {
 		if !info.IsDir() {
 			log.Println(path)
 			fileContents, err := os.ReadFile(path)
 			if err != nil {
 				log.Fatalln(err)
 			}
-			_, err = templates.Parse("{{ define \"" + strings.TrimPrefix(path, strings.TrimPrefix(s.templateDir, "./")+"/") + "\" }}" + string(fileContents) + "{{end}}")
+			_, err = templates.Parse("{{ define \"" + strings.TrimPrefix(path, strings.TrimPrefix(s.TemplateDir, "./")+"/") + "\" }}" + string(fileContents) + "{{end}}")
 			if err != nil {
 				log.Fatalln(err)
 			}
@@ -69,7 +69,7 @@ func main() {
 		log.Fatalln(err)
 	}
 
-	err = filepath.Walk(s.configDir, func(path string, info os.FileInfo, err error) error {
+	err = filepath.Walk(s.ConfigDir, func(path string, info os.FileInfo, err error) error {
 		if !info.IsDir() {
 			log.Println(path)
 			t, err := templates.Clone()
@@ -101,7 +101,7 @@ func main() {
 				return nil
 			}
 
-			targetPath := s.targetDir + "/" + yamlData["target"].(string)
+			targetPath := s.TargetDir + "/" + yamlData["target"].(string)
 			if err != nil {
 				log.Fatalln(err)
 			}
@@ -119,7 +119,7 @@ func main() {
 
 			fmt.Println()
 
-			f, err := os.Create(s.outputDir + "/" + yamlData["output_name"].(string) + filepath.Ext(targetPath))
+			f, err := os.Create(s.OutputDir + "/" + yamlData["output_name"].(string) + filepath.Ext(targetPath))
 			if err != nil {
 				log.Fatalln(err)
 			}
