@@ -4,19 +4,7 @@ ENV TECTONIC_VERSION=0.14.1
 
 WORKDIR /build/
 
-RUN apk add --update --no-cache bash perl
-
-# Install python/pip
-ENV PYTHONUNBUFFERED=1
-RUN apk add --update --no-cache python3 sed && ln -sf python3 /usr/bin/python
-RUN python3 -m ensurepip
-RUN pip3 install --no-cache --upgrade pip setuptools
-
-RUN pip install j2cli[yaml]
-
-COPY docker/ /build/docker/
-
-RUN apk add --update --no-cache wget
+RUN apk add --update --no-cache bash wget
 
 RUN wget "https://github.com/tectonic-typesetting/tectonic/releases/download/tectonic@${TECTONIC_VERSION}/tectonic-${TECTONIC_VERSION}-x86_64-unknown-linux-musl.tar.gz" -O 'tectonic.tar.gz'
 RUN tar -xf 'tectonic.tar.gz'
@@ -27,4 +15,4 @@ WORKDIR /build/
 
 ENV TERM xterm-256color
 
-ENTRYPOINT ["bash", "build_new.sh"]
+ENTRYPOINT ["bash", "build.sh"]

@@ -4,9 +4,9 @@
 
 \urlstyle{same}
 
-\definecolor{title}{rgb}{ {{ .theme.title }} }
-\definecolor{accent}{rgb}{ {{ .theme.accent }} }
-\definecolor{accentlight}{rgb}{ {{ .theme.accentlight }} }
+\definecolor{title}{rgb}{ {{- v "theme.title" -}} }
+\definecolor{accent}{rgb}{ {{- v "theme.accent" -}} }
+\definecolor{accentlight}{rgb}{ {{- v "theme.accentlight" -}} }
 
 \newcolumntype{L}{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}X}
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
@@ -24,114 +24,58 @@
 
 {{ template "latex_personal.tex" . }}
 
-\textbf{\textcolor{title}{\uppercase{
-			 {{- .education.school.label -}} 
-		}}}  {{ .theme.titlegap }} \\  \hfill
-{{- template "resume_table_start.tex" . }}
-		{{ template "resume_entry_education.tex" . }}
-{{ template "resume_table_end.tex" . }}
+{{- range $section := .sections -}}
+{{- if and (not $section.disable) $section.entries -}}
 
- {{ if .work.entries }} 
-\textbf{\textcolor{title}{\uppercase{ {{ .work.label }} }}}  {{ .theme.titlegap }} \\ \hfill
-{{ template "resume_table_start.tex" . }}
-	 {{ range $entry := .work.entries }} 
-	 \textcolor{accent}{
-		{{- if $entry.to }} 
-		{{ $entry.from }}  ---  {{ $entry.to }} 
-		{{else}} 
-		{{ $entry.from -}} 
-		{{- end -}}  
-   } &
-	{{ if $entry.url }} 
-   \textbf{\href{ {{ $entry.url }} }{ {{ $entry.role }} }},
-	{{else}} 
-   \textbf{ {{ $entry.role }} },
-	{{- end -}}  
-   \textit{ {{ $entry.company }} } \linebreak
-	{{ $entry.description }}  \\\\ \hfill
-	 {{- end -}}  
-{{ template "resume_table_end.tex" . }}
- {{- end -}}  
+{{ if $section.newpage -}} \newpage {{- end }}
+{{ if $section.label -}}
+\textbf{\textcolor{title}{\uppercase{ {{- $section.label -}} }}} \\ {{ v "theme.titlegap" }}  \hfill
+{{- end }}
 
- {{ if .engineering.entries }} 
-\textbf{\textcolor{title}{\uppercase{ {{ .engineering.label }} }}}  {{ .theme.titlegap }} \\ \hfill
-{{ template "resume_table_start.tex" . }}
-	 {{- range $entry := .engineering.entries -}} 
-	 \textcolor{accent}{
-		{{- if $entry.to -}} 
-		{{- $entry.from }}  ---  {{ $entry.to -}} 
-		{{- else -}} 
-		{{- $entry.from -}} 
-		{{- end -}}  
-   } &
-	{{- if $entry.url -}} 
-   \textbf{\href{ {{- $entry.url -}} }{ {{- $entry.role -}} }},
-	{{else}} 
-   \textbf{- {{ $entry.role }} -},
-	{{- end -}}  
-   \textit{- {{ $entry.company -}} } \linebreak
-	{{ $entry.description }}  \\\\ \hfill
-	 {{- end -}}  
-{{ template "resume_table_end.tex" . }}
- {{- end -}}  
+\begin{tabularx}{\textwidth}{R{2.5cm} L}
 
- {{ if .projects.newpage }} 
-\newpage
- {{- end -}}  
-\textbf{\textcolor{title}{\uppercase{ {{ .projects.label }} }}}  {{ .theme.titlegap }} \\ \hfill
-{{ template "resume_table_start.tex" . }}
-	 {{ range $entry := .projects.entries }} 
-	\textcolor{accent}{
-		 {{- if $entry.to }} 
-		 {{ $entry.from }}  ---  {{ $entry.to }} 
-		 {{else}} 
-		 {{ $entry.from -}} 
-		 {{- end -}}  
-	} &
-	 {{ if $entry.url }} 
-	\textbf{\href{ {{ $entry.url }} }{ {{ $entry.name }} }},
-	 {{else}} 
-	\textbf{ {{ $entry.name }} },
-	 {{- end -}}  
-	\textit{ {{ $entry.location }} } \linebreak
-	 {{ $entry.description }}                 \\\\ \hfill
-	 {{- end -}}  
-{{ template "resume_table_end.tex" . }}
+{{ range $entry := $section.entries -}}
 
- {{ if .skills.newpage }} 
-\newpage
- {{- end -}}  
-\textbf{\textcolor{title}{\uppercase{ {{ .skills.label }} }}}  {{ .theme.titlegap }} \\ \hfill
-{{ template "resume_table_start.tex" . }}
-	 {{ range $entry := .skills.entries }} 
-	\textcolor{accent}{ {{ $entry.category }} } & \textit{ {{ join  $entry.entries ", "  }} } \\ \hfill
-	 {{- end -}}  
-{{ template "resume_table_end.tex" . }}
+\textcolor{accent}{
+	{{ if $entry.from -}}
+		{{- if $entry.to -}}
+			{{- $entry.from }} --- \newline {{ $entry.to -}}
+		{{- else -}}
+			{{- $entry.from -}}
+		{{- end -}}
+	{{- end -}}
+	{{ if $entry.lefttext -}}
+		{{- $entry.lefttext -}}
+	{{- end -}}
+} &
 
- {{ if .leadership.entries }} 
-\textbf{\textcolor{title}{\uppercase{ {{ .leadership.label }} }}}  {{ .theme.titlegap }} \\ \hfill
-{{ template "resume_table_start.tex" . }}
-	 {{ range $entry := .leadership.entries }} 
-	\textcolor{accent}{
-		 {{ if $entry.to }} 
-		 {{ $entry.from }}  ---  {{ $entry.to }} 
-		 {{else}} 
-		 {{ $entry.from }} 
-		 {{- end -}}  
-	} &
-	\textbf{ {{ $entry.name }} } \linebreak
-	 {{ $entry.description }}  \\\\ \hfill
-	 {{- end -}}  
-{{ template "resume_table_end.tex" . }}
- {{- end -}}  
+{{- if $entry.title -}}
+{{- if $entry.url -}}
+	\textbf{\href{ {{- $entry.url -}} }{ {{- $entry.title -}} }}
+	{{- if not $entry.hiddenlink -}}
+		{ \faIcon{link}}
+	{{- end -}}
+{{- else -}}
+	\textbf{ {{- $entry.title -}} }
+{{- end -}}
+{{- end -}}
 
- {{ if .activities.entries }} 
-\textbf{\textcolor{title}{\uppercase{ {{ .activities.label }} }}}  {{ .theme.titlegap }} \\ \hfill
-{{ template "resume_table_start.tex" . }}
-	 {{ range $entry := .activities.entries }} 
-	\textcolor{accent}{ {{ $entry.title }} } &  {{ $entry.description }}  \\ \hfill
-	 {{- end -}}  
-{{ template "resume_table_end.tex" . }}
- {{- end -}}  
+{{- if $entry.subtitle -}}
+	\textit{ - {{ $entry.subtitle -}} }
+{{- end -}} \hfill\linebreak
+{{ if $entry.description -}}
+	{{- $entry.description -}}
+{{- end -}}
+{{ if $entry.entries -}}
+	{{ join $entry.entries ", " }}
+{{- end -}}
+\hfill
+\\
+{{- if not $entry.lefttext -}}\\{{- end -}}
+
+{{- end }}  
+\end{tabularx}
+{{ end -}}
+{{- end -}}
 
 \end{document}
