@@ -17,10 +17,11 @@ import (
 var configData map[string]interface{} = make(map[string]interface{})
 
 type Specification struct {
-	TemplateDir string `default:"./data/templates"`
-	TargetDir   string `default:"./data/targets"`
-	ConfigDir   string `default:"./data/configs"`
-	OutputDir   string `default:"./output"`
+	TemplateDir   string `default:"./data/templates"`
+	TargetDir     string `default:"./data/targets"`
+	ConfigDir     string `default:"./data/configs"`
+	OutputDir     string `default:"./output"`
+	PrintToStdout bool   `default:"true" split_words:"true"`
 }
 
 func main() {
@@ -32,7 +33,11 @@ func main() {
 		log.Fatalln(err)
 	}
 
+	// Add custom template functions here
 	funcs := template.FuncMap{
+		// `join` is used like so:
+		//		{{ join $entries ", " }}
+		// So that you can join a list with a specified separator
 		"join": func(elems []interface{}, sep string) string {
 			vals := []string{}
 			for _, val := range elems {
@@ -40,8 +45,10 @@ func main() {
 			}
 			return strings.Join(vals, sep)
 		},
+		// `v` is used like so:
+		// 		{{ v "key.path.like.so" }}
+		// So that you can access nested values easily - uses a flattened YAML tree
 		"v": func(e interface{}) string {
-			log.Println(e)
 			v := configData[e.(string)]
 			return v.(string)
 		},
@@ -53,7 +60,6 @@ func main() {
 
 	err = filepath.Walk(s.TemplateDir, func(path string, info os.FileInfo, err error) error {
 		if !info.IsDir() {
-			log.Println(path)
 			fileContents, err := os.ReadFile(path)
 			if err != nil {
 				log.Fatalln(err)
@@ -71,7 +77,6 @@ func main() {
 
 	err = filepath.Walk(s.ConfigDir, func(path string, info os.FileInfo, err error) error {
 		if !info.IsDir() {
-			log.Println(path)
 			t, err := templates.Clone()
 			if err != nil {
 				log.Fatalln(err)
@@ -106,7 +111,7 @@ func main() {
 				log.Fatalln(err)
 			}
 
-			if targetPath == "" {
+			if yamlData["target"].(string) == "" {
 				return fmt.Errorf(targetPath + " is incorrect")
 			}
 
@@ -117,8 +122,6 @@ func main() {
 
 			t.Parse(string(fileContents))
 
-			fmt.Println()
-
 			f, err := os.Create(s.OutputDir + "/" + yamlData["output_name"].(string) + filepath.Ext(targetPath))
 			if err != nil {
 				log.Fatalln(err)
@@ -126,11 +129,15 @@ func main() {
 
 			configData = Flatten(yamlData)
 
-			pipe := io.MultiWriter(os.Stdout, f)
+			var pipe io.Writer
+			if s.PrintToStdout {
+				pipe = io.MultiWriter(os.Stdout, f)
+			} else {
+				pipe = f
+			}
 
 			t.Execute(pipe, yamlData)
 
-			fmt.Println("")
 			f.Close()
 
 		}
