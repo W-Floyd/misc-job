@@ -1,3 +1,5 @@
 # Resume and CV Templating
 
-Borrowing the core Jinja2 templating idea from [Davide Pucci's 'erro'](https://davidepucci.it/doc/erro/), I have written my own bash script to build it for my needs. It utilizes j2 for the templating. The LaTeX document is also currently an old modified version of his personal template.
+Borrowing the core templating idea from [Davide Pucci's 'erro'](https://davidepucci.it/doc/erro/), I have used the Golang text/template engine to build a system for my needs. The LaTeX document is a highly modified version of an old copy of his personal template.
+
+To build, assuming you have docker compose, you can run `docker compose up --build` (`--build` is optional if you're not changing the Go code).
