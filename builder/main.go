@@ -10,12 +10,27 @@ import (
 	"strings"
 	"text/template"
 
+	"github.com/kelseyhightower/envconfig"
 	"gopkg.in/yaml.v3"
 )
 
 var configData map[string]interface{} = make(map[string]interface{})
 
+type Specification struct {
+	templateDir string `default:"./templates"`
+	targetDir   string `default:"./targets"`
+	configDir   string `default:"./configs"`
+	outputDir   string `default:"./output"`
+}
+
 func main() {
+
+	var s Specification
+
+	err := envconfig.Process("builder", &s)
+	if err != nil {
+		log.Fatalln(err)
+	}
 
 	funcs := template.FuncMap{
 		"join": func(elems []interface{}, sep string) string {
@@ -36,16 +51,14 @@ func main() {
 
 	templates := template.New("master").Funcs(funcs)
 
-	templateDir := "./templates"
-
-	err := filepath.Walk(templateDir, func(path string, info os.FileInfo, err error) error {
+	err = filepath.Walk(s.templateDir, func(path string, info os.FileInfo, err error) error {
 		if !info.IsDir() {
 			log.Println(path)
 			fileContents, err := os.ReadFile(path)
 			if err != nil {
 				log.Fatalln(err)
 			}
-			_, err = templates.Parse("{{ define \"" + strings.TrimPrefix(path, strings.TrimPrefix(templateDir, "./")+"/") + "\" }}" + string(fileContents) + "{{end}}")
+			_, err = templates.Parse("{{ define \"" + strings.TrimPrefix(path, strings.TrimPrefix(s.templateDir, "./")+"/") + "\" }}" + string(fileContents) + "{{end}}")
 			if err != nil {
 				log.Fatalln(err)
 			}
@@ -56,13 +69,7 @@ func main() {
 		log.Fatalln(err)
 	}
 
-	targetDir := "./targets"
-
-	configDir := "./configs"
-
-	outputDir := "./output"
-
-	err = filepath.Walk(configDir, func(path string, info os.FileInfo, err error) error {
+	err = filepath.Walk(s.configDir, func(path string, info os.FileInfo, err error) error {
 		if !info.IsDir() {
 			log.Println(path)
 			t, err := templates.Clone()
@@ -94,7 +101,7 @@ func main() {
 				return nil
 			}
 
-			targetPath := targetDir + "/" + yamlData["target"].(string)
+			targetPath := s.targetDir + "/" + yamlData["target"].(string)
 			if err != nil {
 				log.Fatalln(err)
 			}
@@ -112,7 +119,7 @@ func main() {
 
 			fmt.Println()
 
-			f, err := os.Create(outputDir + "/" + yamlData["output_name"].(string) + filepath.Ext(targetPath))
+			f, err := os.Create(s.outputDir + "/" + yamlData["output_name"].(string) + filepath.Ext(targetPath))
 			if err != nil {
 				log.Fatalln(err)
 			}
