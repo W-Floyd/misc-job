@@ -1,5 +1,5 @@
 services:
-  web:
+  builder:
     build: .
     volumes:
       - ./data/:/build/data/

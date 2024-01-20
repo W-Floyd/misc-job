@@ -2,7 +2,7 @@
 
 find ./output/ -type f -exec rm {} \;
 
-./builder/builder
+./builder/builder "${@}"
 
 __ignored_texts=(
     # CMap errors are for FontAwesome, where it makes no sense to map an icon to a copy-paste text

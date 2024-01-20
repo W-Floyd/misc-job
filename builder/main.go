@@ -102,6 +102,22 @@ func main() {
 				log.Fatal(err)
 			}
 
+			shouldProcess := false
+
+			if len(os.Args[1:]) > 0 {
+				for _, arg := range os.Args[1:] {
+					if arg == yamlData["output_name"] {
+						shouldProcess = true
+					}
+				}
+			} else {
+				shouldProcess = true
+			}
+
+			if !shouldProcess {
+				return nil
+			}
+
 			if !yamlData["process"].(bool) {
 				return nil
 			}
