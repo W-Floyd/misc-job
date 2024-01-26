@@ -31,60 +31,58 @@ sections:
         from: Aug 2022
         to: Dec 2023
         description: >
-          Supported 6 primary clients in the successful operation of the Epic Population Health suite (Healthy Planet), as well as backup staffing support across a larger customer base.
+          Partnered with 6 primary clients in the successful operation of the Epic Population Health suite (Healthy Planet), as well as backup staffing support across a larger customer base.
           Responsibilities included customer-facing technical root cause analysis, liaising with internal R\&D teams to develop solutions, and proactively supporting broader adoption of the software suite amongst customers, including presentations at the executive level.
-          Developed searches to determine patient level data correction, and acted as subject matter expert for cardiology and diabetes predictive models.
-      - title: Freshman Project Design Team
-        subtitle: LeTourneau University (LETU)
-        from: Fall 2020
-        to: Fall 2021
+          Developed searches to determine patient-level data correction, and acted as subject matter expert for cardiology and diabetes predictive models.
+      - title: Engineering Design Internship
+        subtitle: LeTourneau University
+        from: Summer 2021
         description: >
-          Led design project for the 2021 Introduction to Engineering Practices 1 (IEP 1) class.
-          Design involved PCB layout, SolidWorks modelling, and Arduino integration and programming.
-          Production run of 185 units were sourced and kits collected.
+          Led educational design project for the 2021 Introduction to Engineering Practices 1 (IEP 1) class.
+          Responsibilities involved PCB layout, SolidWorks modeling, Arduino integration and programming, and writeup of assembly manual and educational curriculum for student use.
+          185 kits were sourced and produced in 3 months according to strict budgetary constraints.
       - title: Machinist and Welder
         subtitle: Rouge Machining
         from: Mar 2018
         to: Dec 2021
+        seasonal: true
         description: >
-          Fabricated tube steel table frames, produced and worked on components for lead shields for the nuclear industry in Oak Ridge, TN.
-          Designed, marketed, and manufactured accessories for mechanical keyboards during downtime.
+          Fabricated tube steel table frames and components integrated into lead shields for the nuclear industry in Oak Ridge, TN.
+          Additionally designed, marketed, and manufactured components for mechanical keyboards.
       - title: Teaching and Grading Assistant
-        subtitle: LETU
+        subtitle: LeTourneau University
         from: Fall 2020
         to: Fall 2021
         description: >
-          Teaching assistant for IEP 1 Lab, involving educating students in basic assembly techniques and diagnosing and solving problems that appeared during assembly, including troubleshooting FDM 3D printers.
-          Grading assistant for IEP 1 Graphics Lab using SolidWorks.
+          Taught students basic assembly and problem-solving techniques, and diagnosed and resolved assembly issues, including troubleshooting and tuning FDM 3D printers.
+          Grading assistant for SolidWorks 3D models in IEP 1 Graphics Lab, developed custom software to aid in automatic analysis of model conformance to rubric.
   - label: Projects
     entries:
       - title: LEGRange (Senior Design, sponsored by Sandia National Labs)
-        subtitle: LETU
+        subtitle: LeTourneau University
         from: Fall 2021
         to: Spring 2022
         description: >
           Led Software Defined Radio (SDR) development for GPS transmission purposes (using C++).
-          Utilized existing software PPRX to interpret sampled radio signals and read GPS data.
-          Development focused on extensible rogue signal generation in software utilizing timing data from PPRX, accounting for constraints including material properties, moving body velocities, radio signal time of flight, and transmission latency.
-          Co-owned both public and limited release progress reports delivered to Sandia National Labs, as well as final technical reports.
+          Focused on extensible rogue signal generation in software utilizing timing data from PPRX, accounting for constraints including material properties, moving body velocities, radio signal time of flight, and transmission latency.
+          Co-owned both public and limited-release progress reports delivered to Sandia National Labs, as well as final technical reports.
           Additionally co-owned mechanical design for electronics housing and thermal performance for driving computer system.
-      - title: Home Assistant MQTT IOT
+      - title: Home Assistant MQTT IOT (Software development)
         subtitle: Personal
         url: https://github.com/W-Floyd/ha-mqtt-iot
         description: >
-          Open source software that provides a MQTT client to interface with HomeAssistant, a home automation software suite.
-          This tool allows creating arbitrary sensors, switches, lights, etc. based on locally run commands, or builtin routines.
-          Programmed in Golang.
+          Open source software that provides an MQTT client to interface with HomeAssistant, a home automation software suite.
+          Programmed in Golang, this tool allows creating arbitrary sensors, switches, lights, etc. based on locally run commands, or builtin routines.
         from: Oct 2020 
         to: Present
-      - title: ClickBait
-        subtitle: LETU
+      - title: ClickBait (Sophomore Design Project)
+        subtitle: LeTourneau University
         url: https://notmy.space/2020/03/clickbait/
         description: >
-          Led an engineering project to create a battery powered automatic fishing caster intended for disabled users, as part of Project Management, Design, and Entrepreneurship.
+          Led an engineering project to create a remotely-operated, battery-powered automatic fishing caster intended for disabled users, as part of Project Management, Design, and Entrepreneurship class. Utilized SolidWorks modelling, FDM 3D printing, and Arduino (C++) programming to construct a working prototype.
         from: Fall 2019
       - title: Pen Plotter
-        subtitle: LETU
+        subtitle: LeTourneau University
         url: https://notmy.space/2021/12/pen-plotter/
         disable: true
         description: >
@@ -95,7 +93,7 @@ sections:
     entries:
       - lefttext: Fabrication
         entries:
-          - Welding (MIG, stick)
+          - Welding (GMAW, SMAW)
           - Lathing
           - Milling
       - lefttext: Prototyping
@@ -106,7 +104,7 @@ sections:
           - Basic PCB layout
       - lefttext: CAD/3D Modeling
         entries:
-          - SolidWorks
+          - Certified SOLIDWORKS Associate in Mechanical Design
           - OpenSCAD
           - Blender
           - KiCAD
@@ -129,7 +127,7 @@ sections:
           - Metabase
       - lefttext: Linux Systems
         entries:
-          - System administration
+          - System Administration
           - Debian
           - Arch
           - Docker

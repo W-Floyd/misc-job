@@ -46,6 +46,9 @@
 		{{- else -}}
 			{{- $entry.from -}}
 		{{- end -}}
+		{{- if $entry.seasonal -}}
+			\newline \small{(\textit{Seasonal})}
+		{{- end -}}
 	{{- end -}}
 	{{ if $entry.lefttext -}}
 		{{- $entry.lefttext -}}
