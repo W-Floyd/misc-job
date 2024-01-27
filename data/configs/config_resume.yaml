@@ -28,15 +28,15 @@ sections:
     entries:
       - title: Technical Services Engineer
         subtitle: Epic Systems Corporation
-        from: Aug 2022
-        to: Dec 2023
+        from: Aug 2022 # 2022-08-01
+        to: Dec 2023   # 2023-12-15
         description: >
           Partnered with 6 primary clients in the successful operation of the Epic Population Health suite (Healthy Planet), as well as backup staffing support across a larger customer base.
           Responsibilities included customer-facing technical root cause analysis, liaising with internal R\&D teams to develop solutions, and proactively supporting broader adoption of the software suite amongst customers, including presentations at the executive level.
           Developed searches to determine patient-level data correction, and acted as subject matter expert for cardiology and diabetes predictive models.
       - title: Engineering Design Internship
         subtitle: LeTourneau University
-        from: Summer 2021
+        from: Summer 2021 # 2021-05-10 -> 2021-08-20
         description: >
           Led educational design project for the 2021 Introduction to Engineering Practices 1 (IEP 1) class.
           Responsibilities involved PCB layout, SolidWorks modeling, Arduino integration and programming, and writeup of assembly manual and educational curriculum for student use.
