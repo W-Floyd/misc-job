@@ -1,4 +1,4 @@
 /output/
 /builder/builder
 **/private
-**sereena*
+/data/secrets/*

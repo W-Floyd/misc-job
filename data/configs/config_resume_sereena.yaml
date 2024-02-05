@@ -1,0 +1,151 @@
+{{ template "theme.yaml" . }}
+{{ template "config.yaml" . }}
+
+process: true
+debug: false
+
+secrets: sereena.yaml
+
+output:
+  - target: template_resume.tex
+    name: Sereena Balid
+
+sections:
+  - entries:
+      - title: Mechanical Engineering, B.S. (BSME)
+        subtitle: LeTourneau University (LETU)
+        description: 3.94/4.0 (Summa Cum Laude)
+        from: May 2022
+  - label: Experience
+    entries:
+      - title: SQS (Supplier Quality Surveillance) Engineer 
+        subtitle: Kiewit Corporation
+        from: Jul 2022
+        to: Present
+        bullets:
+          - Ensures engineered equipment is manufactured and tested in accordance with project requirements.
+          - Collaborate with Engineers, Suppliers and Clients in managing supplier quality program on projects.
+          - Review Supplier quality submittals such as inspection and test plans, welding, coating, and test procedures to verify conformance with contracts, datasheets, equipment specifications, codes, and standards.
+          - Review supplier findings and NCR's and coordinate developing Supplier Corrective Actions plans.
+      - title: Engineering Intern
+        subtitle: JTAM Engineering, LLC
+        from: Summer 2021
+        bullets:
+          - Led a team of interns in design management of an irrigation system.
+          - Developed Operations and Maintenance folder structure and assisted with project bids, document control, and final report writing.
+      - title: Senior Design (Capstone Senior Project)
+        subtitle: LeTourneau University
+        from: Fall 2021
+        to: Spring 2022
+        bullets:
+          - Designed and developed a medical grade robotic device for rehabilitation of individuals with spinal cord injuries using a process named operant conditioning.
+          - Comptroller and fundraising lead for team.
+          - Responsibilities involved 3D design in SolidWorks, machining and prototyping along with budgeting.
+      - title: Automatic Fishing Pole Caster (Engineering Project Management Course)
+        subtitle: LeTourneau University
+        from: Fall 2019
+        bullets:
+          - Designed and developed an automatic fishing pole caster for physically challenged people.
+          - Responsible as Project Manager for integration of mechanical, electrical and software systems to build a working prototype, final documentation, and formal presentation of prototype.
+      - title: Grading Assistant
+        subtitle: LeTourneau University
+        from: Summer 2020
+        to: Spring 2021
+        bullets:
+          - Statics, Mechanics of Materials, Dynamics and Project Management, Design and Entrepreneurship.
+      - title: Resident Assistant
+        subtitle: LeTourneau University
+        from: Fall 2021
+        to: Spring 2022
+        bullets:
+          - Leader in providing an enriching residential environment for fellow residents and peers.
+          - Responsibilities involved supervising residents and responding to complaints, reports, requests, and emergencies as well as coordination of events.
+      - title: International Student Orientation Lead 
+        subtitle: LeTourneau University
+        from: Spring 2020
+        to: Spring 2021
+        bullets:
+          - Led the student team to organize orientation for incoming international students.
+  - label: Technical Skills
+    entries:
+      - lefttext: Software
+        entries:
+          - SolidWorks
+          - C++
+          - MATLAB/Octave
+          - AFT Fathom
+          - Maple
+          - LABVIEW
+      - lefttext: Manufacturing
+        entries:
+          - Lathing
+          - Welding
+      - lefttext: Prototyping
+        description: >
+          Assembled and can operate a 3D printer, experience with Arduino systems.
+      - lefttext: Management
+        description: >
+          Has successfully managed teams of various types.
+      - lefttext: Technical Writing
+        description: >
+          Has fulfilled the role of technical writer successfully on several occasions.
+      - lefttext: Microsoft Office
+        description: >
+          Comfortable with Word, Excel, PowerPoint, and Access.
+      - lefttext: Language
+        entries:
+          - English
+          - Hindi
+          - Marathi
+          - French
+  - label: Volunteering
+    entries:
+      - title: Peer Advisor
+        subtitle: LeTourneau University
+        from: Fall 2020
+        to: Spring 2022
+        disable: true
+        bullets:
+          - Mentors and assists new students with transitioning into college life and other aspects of education. Includes addressing academic concerns with individual students.
+      - title: President and Treasurer
+        subtitle: LETU International Student Club
+        from: Fall 2019
+        to: Spring 2021
+      - title: Networking Committee Member
+        subtitle: Women In Kiewit Power + Industrial
+        from: Spring 2023
+        to: Present
+      - title: Vice President
+        subtitle: Society of Women Engineers (Kansas City Section)
+        from: Summer 2023
+        to: Present
+  - label: Certifications
+    entries:
+      - title: ASNT VT Level I/II 
+        subtitle: Kiewit University
+        from: August 2022
+      - title: Operations Quality Control
+        subtitle: Kiewit University
+        from: October 2022
+      - title: EIT - Engineer In Training
+        subtitle: Kansas State Board of Technical Professions
+        from: February 2023
+      - title: Basic Coatings Inspector
+        subtitle: AMPP – Association for Materials Protection and Performance
+        from: March 2023
+  - label: Activities and Achievements
+    entries:
+      - title: Epsilon ETA Sigma (LETU Engineer Honors Society)
+        subtitle: LeTourneau University
+        from: April 2022
+      - title: Distinguished Senior
+        subtitle: LeTourneau University
+        from: March 2022
+      - title: Honors College Member
+        subtitle: LeTourneau University
+        from: Fall 2018
+        to: Spring 2022
+      - title: President's List
+        subtitle: LeTourneau University
+        from: Spring 2019
+        to: Spring 2021
