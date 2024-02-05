@@ -29,8 +29,8 @@ jobs:
     - uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: output/*.pdf
-        file_glob: true
+        file: output/William Floyd.pdf
+        asset_name: William Floyd.pdf
         tag: release
         release_name: Release
         overwrite: true
