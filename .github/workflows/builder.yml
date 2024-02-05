@@ -21,15 +21,21 @@ jobs:
     - run: tar -xf 'tectonic.tar.gz'
     - run: rm 'tectonic.tar.gz'
     - run: ./builder/build.sh 'William Floyd'
-    - run: ls output
     - uses: actions/upload-artifact@v3
       with:
         name: Resume
         path: output/William Floyd.pdf
+    - uses: andreaswilli/delete-release-assets-action@<version>
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        tag: release
     - uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: output/*
-        overwrite: true
+        file: output/*.pdf
         file_glob: true
         tag: release
+        release_name: Release
+        overwrite: true
+        target_commit: release
+        body: Auto built resume
