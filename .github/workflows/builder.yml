@@ -26,3 +26,10 @@ jobs:
       with:
         name: Resume
         path: output/William Floyd.pdf
+    - uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: output/William Floyd.pdf
+        asset_name: Resume
+        tag: ${{ github.ref }}
+        overwrite: true
