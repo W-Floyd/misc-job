@@ -2,6 +2,12 @@
 
 __output_dir='./output/'
 
+__tectonic='tectonic'
+
+if [ -e './tectonic' ]; then
+    __tectonic='./tectonic'
+fi
+
 if ! [ -d "${__output_dir}" ]; then
     mkdir "${__output_dir}"
 fi
@@ -15,7 +21,7 @@ Failed to load ToUnicode CMap for font'
 
 find "${__output_dir}" -maxdepth 1 -type f -iname '*.tex' | while read -r __file; do
     echo "Building ${__file}"
-    tectonic --color 'always' --outdir "${__output_dir}" "${__file}" |& while read -r __line; do
+    "${__tectonic}" --color 'always' --outdir "${__output_dir}" "${__file}" |& while read -r __line; do
         grep -Fq -f <(echo "${__ignored_texts}") <<<"${__line}" || echo "${__line}"
     done
 done
