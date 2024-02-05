@@ -2,9 +2,9 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "release" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "release" ]
 
 jobs:
 
@@ -31,5 +31,8 @@ jobs:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         file: output/William Floyd.pdf
         asset_name: William Floyd.pdf
-        tag: ${{ github.ref }}
+        tag: release
+        release_name: Release
         overwrite: true
+        target_commit: release
+        body: Auto built resume
