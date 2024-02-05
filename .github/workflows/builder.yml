@@ -30,6 +30,6 @@ jobs:
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         file: output/William Floyd.pdf
-        asset_name: Resume
+        asset_name: William Floyd.pdf
         tag: ${{ github.ref }}
         overwrite: true
