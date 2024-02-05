@@ -74,7 +74,7 @@ sections:
         description: >
           Open source software that provides an MQTT client to interface with HomeAssistant, a home automation software suite.
           Programmed in Golang, this tool allows creating arbitrary sensors, switches, lights, etc. based on locally run commands, or builtin routines.
-        from: Oct 2020 
+        from: Oct 2020
         to: Present
       - title: ClickBait (Sophomore Design Project)
         subtitle: LeTourneau University
