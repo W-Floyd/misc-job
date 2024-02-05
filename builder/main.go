@@ -20,12 +20,13 @@ var (
 )
 
 type Specification struct {
-	TemplateDir   string `default:"./data/templates"`
-	TargetDir     string `default:"./data/targets"`
-	ConfigDir     string `default:"./data/configs"`
-	SecretsDir    string `default:"./data/secrets"`
-	OutputDir     string `default:"./output"`
-	PrintToStdout bool   `default:"true" split_words:"true"`
+	TemplateDir   string   `default:"./data/templates"`
+	TargetDir     string   `default:"./data/targets"`
+	ConfigDir     string   `default:"./data/configs"`
+	SecretsDir    string   `default:"./data/secrets"`
+	OutputDir     string   `default:"./output"`
+	PrintToStdout bool     `default:"true" split_words:"true"`
+	ProcessList   []string `split_words:"true"`
 }
 
 func main() {
@@ -146,20 +147,25 @@ func main() {
 				return nil
 			}
 
-			if secretsFilename, ok := yamlData["secrets"]; ok {
-				secretsFileContents, err := os.ReadFile(s.SecretsDir + "/" + secretsFilename.(string))
-				if err != nil {
-					return err
+			outputList := make(map[string]bool)
+
+			shouldProcessAll := true
+
+			if len(os.Args[1:]) > 0 {
+				for _, arg := range os.Args[1:] {
+					outputList[arg] = true
 				}
-				secretsDataRaw := map[string]interface{}{}
-				err = yaml.Unmarshal(secretsFileContents, &secretsDataRaw)
-				if err != nil {
-					return err
+			} else if len(s.ProcessList) > 0 {
+				for _, arg := range s.ProcessList {
+					outputList[arg] = true
 				}
-				yamlData = mergeMaps(secretsDataRaw, yamlData)
-				secretsData = Flatten(secretsDataRaw)
-				configData = mergeMaps(secretsData, configData)
 			}
+
+			if len(outputList) > 0 {
+				shouldProcessAll = false
+			}
+
+			loadedSecrets := false
 
 			for _, output := range yamlData["output"].([]interface{}) {
 
@@ -168,19 +174,31 @@ func main() {
 
 				shouldProcess := false
 
-				if len(os.Args[1:]) > 0 {
-					for _, arg := range os.Args[1:] {
-						if arg == outputName {
-							shouldProcess = true
-						}
-					}
-				} else {
+				if shouldProcessAll || outputList[outputName] {
 					shouldProcess = true
 				}
 
 				if !shouldProcess {
 					continue
 				}
+
+				if !loadedSecrets {
+					if secretsFilename, ok := yamlData["secrets"]; ok {
+						secretsFileContents, err := os.ReadFile(s.SecretsDir + "/" + secretsFilename.(string))
+						if err != nil {
+							return err
+						}
+						secretsDataRaw := map[string]interface{}{}
+						err = yaml.Unmarshal(secretsFileContents, &secretsDataRaw)
+						if err != nil {
+							return err
+						}
+						yamlData = mergeMaps(secretsDataRaw, yamlData)
+						secretsData = Flatten(secretsDataRaw)
+						configData = mergeMaps(secretsData, configData)
+					}
+				}
+				loadedSecrets = true
 
 				targetPath := s.TargetDir + "/" + outputTarget
 				if err != nil {
