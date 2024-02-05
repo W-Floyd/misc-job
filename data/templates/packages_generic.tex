@@ -1,5 +1,5 @@
 \usepackage[letterpaper, total={8.5in, 11in}]{geometry}
-\usepackage[nodisplayskipstretch]{setspace}
+\usepackage{setspace}\setdisplayskipstretch{}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{array}
@@ -9,3 +9,6 @@
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{scrextend}
+{{ if .debug -}}
+\usepackage{showframe}
+{{- end }}

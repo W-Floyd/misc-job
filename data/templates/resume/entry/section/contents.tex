@@ -1,0 +1,26 @@
+{{- if and (or .description .bullets .entries) (or .title .subtitle .to .from) }}
+	\vfill\break
+{{ end -}}
+{{ if and (or .description .bullets .entries) (not .lefttext) -}}
+\begin{minipage}{\linewidth}
+\begin{adjustwidth}{ {{- v "config.contentindent" -}} }{0pt}
+{{ end -}}
+{{- if .description -}}
+	{{ .description -}}
+{{- end -}}
+{{ if .bullets }}
+\begin{minipage}{\linewidth}
+	\begin{itemize}
+		{{- range .bullets }}
+			\item {{ . -}}
+		{{ end }}
+	\end{itemize}
+\end{minipage}
+{{- end -}}
+{{ if .entries -}}
+	{{ join .entries ", " }}
+{{- end -}}
+{{ if and (or .description .bullets .entries) (not .lefttext) -}}
+\end{adjustwidth}
+\end{minipage}
+{{- end }}

@@ -1,0 +1,10 @@
+{{- if not .lefttext -}}
+& \multicolumn{2}{ {{vbar}} Q {{vbar}} }{
+{{ end -}}
+{{- if .lefttext -}} \multicolumn{2}{ {{vbar}} R{ {{- v "config.leftwidth" -}}} {{vbar}} }{ {{ .lefttext }} } & {{ end -}}
+{{- template "resume/entry/section/title.tex" . -}}
+{{- template "resume/entry/section/date.tex" . }}
+{{- template "resume/entry/section/contents.tex" . -}}
+{{- if not .lefttext -}}
+}
+{{- end -}}

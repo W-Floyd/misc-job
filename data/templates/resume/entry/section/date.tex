@@ -1,0 +1,9 @@
+{{- if .from -}}
+	\dotfill \textit{
+	{{- if .seasonal -}}
+		\textcolor{accent}{ \small{(\textit{Seasonal})} }
+	{{- end -}}
+	\textcolor{accent}{ {{- .from -}} }
+	{{- if .to }} \textcolor{accent}{--- {{ .to -}} } {{- end -}}
+	}
+{{- end -}}

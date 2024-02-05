@@ -1,4 +1,4 @@
-{{- template "packages_generic.tex" . -}}
+{{- template "packages_generic.tex" . }}
 
 \newcount\XeTeXtracingfonts
 % TODO: Check the following for status (in ascending order of specificity):
@@ -9,4 +9,11 @@
 \usepackage[sfdefault,condensed]{roboto}
 \usepackage{qrcode}
 \usepackage{ltablex}
+\keepXColumns
 \usepackage{caption}
+\usepackage{makecell}
+\usepackage{enumitem}
+\setlist{nosep,leftmargin=*}
+\usepackage[skip=0pt]{parskip}
+\usepackage{multicol}
+\usepackage{changepage}

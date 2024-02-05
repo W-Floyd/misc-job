@@ -1,40 +1,56 @@
-\begin{minipage}{0.5\textwidth}
-	\begin{flushleft}
-		\textbf{\Huge{ {{- .personal.name -}} }} \\ \hfill \vfill
-	\end{flushleft}
-\end{minipage}
-\begin{minipage}{
-	{{- if .theme.qrcode -}}
-	0.3
-	{{- else -}}
-	0.45
+{{ if .theme.qrcode }}
+\begin{tabularx}{\textwidth}{ {{vbar}} l {{vbar}} Q {{vbar}} c {{vbar}} }
+{{ else }}
+\begin{tabularx}{\textwidth}{ {{vbar}} l {{vbar}} Q {{vbar}} }
+{{ end }}
+
+{{hline}}
+
+\textbf{\Huge{ 
+	{{- .personal.name -}} 
+	{{- if .personal.titles -}}
+	{{- range $title := .personal.titles -}}
+		, {{ $title -}}
 	{{- end -}}
-\textwidth}
+	{{- end -}}
+}} &
+
+\begin{minipage}{\linewidth}
 	\begin{flushright}
 		\textit{
 			\href{tel: {{- .personal.phone -}} }{ {{- .personal.phone -}} } \hspace{1mm}
 			{{- if .theme.icons -}} \color{accentlight}\faIcon{phone-square}\color{black} {{- end -}}  \\
 			\href{mailto: {{- .personal.email -}} }{ {{- .personal.email -}} } \hspace{1mm}
 			{{- if .theme.icons -}} \color{accentlight}\faIcon{envelope}\color{black} {{- end -}}  \\
-			\href{ {{- .personal.url_personal -}} }{ {{- .personal.url_personal -}} } \hspace{1mm}
-			{{- if .theme.icons -}} \color{accentlight}\faIcon{external-link-square-alt}\color{black} {{- end -}}  \\
-			\href{ {{- .personal.url_github -}} }{ {{- .personal.url_github_abbr -}} } \hspace{1mm}
-			{{- if .theme.icons -}} \color{accentlight}\faIcon{github-square}\color{black} {{- end -}}  \\
-			\href{ {{- .personal.url_linkedin -}} }{ {{- .personal.url_linkedin_abbr -}} } \hspace{1mm}
-			{{- if .theme.icons -}} \color{accentlight}\faIcon{linkedin}\color{black} {{- end -}}  \\
+			{{ range $entry := .personal.extra_links -}}
+				\href{ {{- $entry.url -}} }{ 
+					{{- if $entry.display_title }}
+						{{- $entry.display_title -}}
+					{{ else }}
+						{{- $entry.url -}}
+					{{ end -}}
+					} \hspace{1mm}
+				{{- if vbool "theme.icons" -}} \color{accentlight}\faIcon{ {{- $entry.icon -}}}\color{black} {{- end -}}  \\
+			{{ end -}}
 		}
 	\end{flushright}
-\end{minipage}
+\end{minipage} 
+
 {{ if not .theme.icons -}}
 	\color{accentlight}\vline\color{black}
 {{- end -}}
-{{ if .theme.qrcode -}} 
-	\begin{minipage}{0.15\textwidth}
-	\vfill
-	\hfill
-	\qrcode[height=0.70in]{ {{- .personal.url_personal -}} }
-	\hfill
-	\vfill
-	\end{minipage}
+
+{{- if .theme.qrcode -}}
+{{ $shown := false }}
+{{- range $entry := .personal.extra_links -}}
+	{{- if and $entry.qrcode (not $shown) -}}
+		{{ $shown = true }}
+		& \qrcode{ {{- $entry.url -}} }
+	{{- end -}}
+{{- end -}}
+
 {{- end }}
 
+\\{{hline}}
+
+\end{tabularx}

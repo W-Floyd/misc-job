@@ -1,0 +1,6 @@
+theme:
+  accent: 0,0,0
+  accentlight: 0,0,0
+  title: 0,0,0
+  icons: true
+  qrcode: false

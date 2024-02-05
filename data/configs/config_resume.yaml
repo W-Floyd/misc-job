@@ -1,22 +1,23 @@
-{{ template "personal.yaml" . }}
-
-process: true
-
-target: template_resume.tex
-
-output_name: William Floyd
-
-theme:
-  accent: 0,0,0
-  accentlight: 0,0,0
-  title: 0,0,0
-  icons: true
-  qrcode: false
+{{ template "theme.yaml" . }}
 
 config:
-  margin: 1.125cm
-  titlegap: \medskip
-  entrygap: "0.875"
+  margin: 1.25cm
+  sectiongap: \vspace{12pt}
+  entrygap: \vspace{12pt}
+  labelgap: \vspace{4pt}
+  arraystretch: "0.875"
+  leftwidth: 2.5cm
+  leftindent: 0pt
+  contentindent: 8pt
+
+process: true
+debug: false
+
+secrets: personal.yaml
+
+output:
+  - target: template_resume.tex
+    name: William Floyd
 
 sections:
   - entries:
@@ -28,10 +29,10 @@ sections:
     entries:
       - title: Technical Services Engineer
         subtitle: Epic Systems Corporation
-        from: Aug 2022 # 2022-08-01
+        from: Aug 2022
         to: Dec 2023   # 2023-12-15
         description: >
-          Partnered with 6 primary clients in the successful operation of the Epic Population Health suite (Healthy Planet), as well as backup staffing support across a larger customer base.
+          Partnered with 6 primary
           Responsibilities included customer-facing technical root cause analysis, liaising with internal R\&D teams to develop solutions, and proactively supporting broader adoption of the software suite amongst customers, including presentations at the executive level.
           Developed searches to determine patient-level data correction, and acted as subject matter expert for cardiology and diabetes predictive models.
       - title: Engineering Design Internship
@@ -51,8 +52,8 @@ sections:
           Additionally designed, marketed, and manufactured components for mechanical keyboards.
       - title: Teaching and Grading Assistant
         subtitle: LeTourneau University
-        from: Fall 2020
-        to: Fall 2021
+        from: Fall 2020 # 2020-08-24
+        to: Fall 2021   # 2021-11-19
         description: >
           Taught students basic assembly and problem-solving techniques, and diagnosed and resolved assembly issues, including troubleshooting and tuning FDM 3D printers.
           Grading assistant for SolidWorks 3D models in IEP 1 Graphics Lab, developed custom software to aid in automatic analysis of model conformance to rubric.
@@ -84,12 +85,10 @@ sections:
       - title: Pen Plotter
         subtitle: LeTourneau University
         url: https://notmy.space/2021/12/pen-plotter/
-        disable: true
         description: >
           For IEP 2 class, designed from scratch a low cost (\$20) CNC pen plotter, including 3D printed hardware and custom GCode parser.
         from: Spring 2019
   - label: Technical Skills
-    newpage: false
     entries:
       - lefttext: Fabrication
         entries:

@@ -1,0 +1,14 @@
+{{- if .title -}}
+{{- if .url -}}
+	\textbf{\href{ {{- .url -}} }{ {{- .title -}} }}
+	{{- if not .hiddenlink -}}
+		{ \faIcon{link}}
+	{{- end -}}
+{{- else -}}
+	\textbf{ {{- .title -}} }
+{{- end -}}
+{{- end -}}
+
+{{- if .subtitle -}}
+	\textit{ - {{ .subtitle -}} }
+{{- end -}}

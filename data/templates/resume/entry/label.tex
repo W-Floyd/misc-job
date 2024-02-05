@@ -1,0 +1,10 @@
+{{hline}}
+{{ if .label -}}
+\multicolumn{3}{ {{vbar}} Q {{vbar}} }{
+\textbf{\textcolor{title}{\uppercase{ {{- .label -}} }}}
+}
+{{- if (or .description .entries .bullets) -}}
+{{ v "config.labelgap" }}
+{{- end -}}
+\\ {{hline}}
+{{ end }}

@@ -14,12 +14,16 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
-var configData map[string]interface{} = make(map[string]interface{})
+var (
+	configData  map[string]interface{} = make(map[string]interface{})
+	secretsData map[string]interface{} = make(map[string]interface{})
+)
 
 type Specification struct {
 	TemplateDir   string `default:"./data/templates"`
 	TargetDir     string `default:"./data/targets"`
 	ConfigDir     string `default:"./data/configs"`
+	SecretsDir    string `default:"./data/secrets"`
 	OutputDir     string `default:"./output"`
 	PrintToStdout bool   `default:"true" split_words:"true"`
 }
@@ -52,6 +56,36 @@ func main() {
 			v := configData[e.(string)]
 			return v.(string)
 		},
+		// `vbool` is used like so:
+		//		{{ if vbool "key.path.like.so" }}
+		//			...
+		//		{{ end }}
+		"vbool": func(e interface{}) (ret bool, err error) {
+			v, ok := configData[e.(string)]
+			if !ok {
+				err = fmt.Errorf("Key " + e.(string) + " does not exist")
+			}
+			ret = v.(bool)
+			return
+		},
+		"inc": func(i int) int {
+			return i + 1
+		},
+		"dec": func(i int) int {
+			return i - 1
+		},
+		"vbar": func() string {
+			if configData["debug"].(bool) {
+				return "|"
+			}
+			return ""
+		},
+		"hline": func() string {
+			if configData["debug"].(bool) {
+				return `\hline`
+			}
+			return ""
+		},
 	}
 
 	log.SetFlags(log.Ldate | log.Ltime | log.Lmicroseconds | log.LUTC | log.Lshortfile)
@@ -64,9 +98,13 @@ func main() {
 			if err != nil {
 				log.Fatalln(err)
 			}
-			_, err = templates.Parse("{{ define \"" + strings.TrimPrefix(path, strings.TrimPrefix(s.TemplateDir, "./")+"/") + "\" }}" + string(fileContents) + "{{end}}")
+
+			templateString := "{{ define \"" + strings.TrimPrefix(path, strings.TrimPrefix(s.TemplateDir, "./")+"/") + "\" }}" + string(fileContents) + "{{ end }}"
+
+			_, err = templates.Parse(templateString)
 			if err != nil {
-				log.Fatalln(err)
+				log.Println(err)
+				log.Fatalln(templateString)
 			}
 		}
 		return err
@@ -99,62 +137,101 @@ func main() {
 
 			err = yaml.Unmarshal(config, &yamlData)
 			if err != nil {
-				log.Fatal(err)
+				return err
 			}
 
-			shouldProcess := false
-
-			if len(os.Args[1:]) > 0 {
-				for _, arg := range os.Args[1:] {
-					if arg == yamlData["output_name"] {
-						shouldProcess = true
-					}
-				}
-			} else {
-				shouldProcess = true
-			}
-
-			if !shouldProcess {
-				return nil
-			}
+			configData = Flatten(yamlData)
 
 			if !yamlData["process"].(bool) {
 				return nil
 			}
 
-			targetPath := s.TargetDir + "/" + yamlData["target"].(string)
-			if err != nil {
-				log.Fatalln(err)
+			if secretsFilename, ok := yamlData["secrets"]; ok {
+				secretsFileContents, err := os.ReadFile(s.SecretsDir + "/" + secretsFilename.(string))
+				if err != nil {
+					return err
+				}
+				secretsDataRaw := map[string]interface{}{}
+				err = yaml.Unmarshal(secretsFileContents, &secretsDataRaw)
+				if err != nil {
+					return err
+				}
+				yamlData = mergeMaps(secretsDataRaw, yamlData)
+				secretsData = Flatten(secretsDataRaw)
+				configData = mergeMaps(secretsData, configData)
 			}
 
-			if yamlData["target"].(string) == "" {
-				return fmt.Errorf(targetPath + " is incorrect")
+			for _, output := range yamlData["output"].([]interface{}) {
+
+				outputTarget := output.(map[string]interface{})["target"].(string)
+				outputName := output.(map[string]interface{})["name"].(string)
+
+				shouldProcess := false
+
+				if len(os.Args[1:]) > 0 {
+					for _, arg := range os.Args[1:] {
+						if arg == outputName {
+							shouldProcess = true
+						}
+					}
+				} else {
+					shouldProcess = true
+				}
+
+				if !shouldProcess {
+					continue
+				}
+
+				targetPath := s.TargetDir + "/" + outputTarget
+				if err != nil {
+					log.Println(err)
+					continue
+				}
+
+				if outputTarget == "" {
+					return fmt.Errorf(targetPath + " is incorrect")
+				}
+
+				fileContents, err = os.ReadFile(targetPath)
+				if err != nil {
+					log.Println(err)
+					continue
+				}
+
+				_, err = t.Parse(string(fileContents))
+				if err != nil {
+					log.Println(err)
+					continue
+				}
+
+				f, err := os.Create(s.OutputDir + "/" + outputName + filepath.Ext(targetPath))
+
+				if err != nil {
+					log.Println(err)
+					continue
+				}
+
+				defer func() {
+					err := f.Close()
+					if err != nil {
+						log.Println(err)
+					}
+				}()
+
+				var pipe io.Writer
+				if s.PrintToStdout {
+					pipe = io.MultiWriter(os.Stdout, f)
+				} else {
+					pipe = f
+				}
+
+				err = t.Execute(pipe, yamlData)
+				if err != nil {
+					log.Println(err)
+					continue
+				}
+
 			}
-
-			fileContents, err = os.ReadFile(targetPath)
-			if err != nil {
-				log.Fatalln(err)
-			}
-
-			t.Parse(string(fileContents))
-
-			f, err := os.Create(s.OutputDir + "/" + yamlData["output_name"].(string) + filepath.Ext(targetPath))
-			if err != nil {
-				log.Fatalln(err)
-			}
-
-			configData = Flatten(yamlData)
-
-			var pipe io.Writer
-			if s.PrintToStdout {
-				pipe = io.MultiWriter(os.Stdout, f)
-			} else {
-				pipe = f
-			}
-
-			t.Execute(pipe, yamlData)
-
-			f.Close()
 
 		}
 		return err
@@ -179,4 +256,15 @@ func Flatten(m map[string]interface{}) map[string]interface{} {
 		}
 	}
 	return o
+}
+
+// overwriting duplicate keys, you should handle that if there is a need
+func mergeMaps(maps ...map[string]interface{}) map[string]interface{} {
+	result := make(map[string]interface{})
+	for _, m := range maps {
+		for k, v := range m {
+			result[k] = v
+		}
+	}
+	return result
 }
