@@ -2,9 +2,9 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "release" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "release" ]
+    branches: [ "main" ]
 
 jobs:
 
@@ -38,5 +38,5 @@ jobs:
         tag: release
         release_name: Release
         overwrite: true
-        target_commit: release
+        target_commit: main
         body: Auto built resume
