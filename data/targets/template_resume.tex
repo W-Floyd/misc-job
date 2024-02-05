@@ -34,11 +34,13 @@
 {{- template "resume/entry/label.tex" $section -}}
 {{- $length := len $section.entries -}}
 {{- range $index, $entry := $section.entries -}}
+{{- if (not $entry.disable) -}}
 {{- template "resume/entry/section.tex" $entry }}
 {{- if and (not (eq $length (inc $index))) (and (or .title .subtitle .to .from) (or .description .entries .bullets)) -}}
 {{- v "config.entrygap" -}}
 {{- end -}}
 \\
+{{- end -}}
 {{- hline -}}
 {{- end -}}
 \end{tabularx}

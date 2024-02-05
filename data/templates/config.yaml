@@ -1,8 +1,8 @@
 config:
   margin: 1.125cm
-  sectiongap: \vspace{6pt}
-  entrygap: \vspace{6pt}
-  labelgap: \vspace{2pt}
+  sectiongap: \vspace{9pt}
+  entrygap: \vspace{9pt}
+  labelgap: \vspace{3pt}
   arraystretch: "0.875"
   leftwidth: 2.5cm
   leftindent: 0pt

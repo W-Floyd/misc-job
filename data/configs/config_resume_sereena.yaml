@@ -66,6 +66,60 @@ sections:
         to: Spring 2021
         bullets:
           - Led the student team to organize orientation for incoming international students.
+  - label: Volunteering
+    entries:
+      - title: Vice President
+        subtitle: Society of Women Engineers (Kansas City Section)
+        from: Summer 2023
+        to: Present
+      - title: Networking Committee Member
+        subtitle: Women In Kiewit Power + Industrial
+        from: Spring 2023
+        to: Present
+      - title: Peer Advisor
+        subtitle: LeTourneau University
+        from: Fall 2020
+        to: Spring 2022
+        disable: true
+        bullets:
+          - Mentored and assisted new students with transitioning into college life and other aspects of education. Includes addressing academic concerns with individual students.
+      - title: President and Treasurer
+        subtitle: LETU International Student Club
+        from: Fall 2019
+        to: Spring 2021
+  - label: Certifications and Courses
+    entries:
+      - title: Basic Coatings Inspector
+        subtitle: AMPP – Association for Materials Protection and Performance
+        from: March 2023
+      - title: EIT - Engineer In Training
+        subtitle: Kansas State Board of Technical Professions
+        from: February 2023
+      - title: FE Mechanical
+        subtitle: NCEES
+        from: October 2022
+      - title: Operations Quality Control
+        subtitle: Kiewit University
+        from: October 2022
+      - title: ASNT VT Level I/II
+        subtitle: Kiewit University
+        from: August 2022
+  - label: Achievements
+    entries:
+      - title: Epsilon ETA Sigma (LETU Engineer Honors Society)
+        subtitle: LeTourneau University
+        from: April 2022
+      - title: Distinguished Senior
+        subtitle: LeTourneau University
+        from: March 2022
+      - title: Honors College Member
+        subtitle: LeTourneau University
+        from: Fall 2018
+        to: Spring 2022
+      - title: President's List
+        subtitle: LeTourneau University
+        from: Spring 2019
+        to: Spring 2021
   - label: Technical Skills
     entries:
       - lefttext: Software
@@ -98,54 +152,3 @@ sections:
           - Hindi
           - Marathi
           - French
-  - label: Volunteering
-    entries:
-      - title: Peer Advisor
-        subtitle: LeTourneau University
-        from: Fall 2020
-        to: Spring 2022
-        disable: true
-        bullets:
-          - Mentors and assists new students with transitioning into college life and other aspects of education. Includes addressing academic concerns with individual students.
-      - title: President and Treasurer
-        subtitle: LETU International Student Club
-        from: Fall 2019
-        to: Spring 2021
-      - title: Networking Committee Member
-        subtitle: Women In Kiewit Power + Industrial
-        from: Spring 2023
-        to: Present
-      - title: Vice President
-        subtitle: Society of Women Engineers (Kansas City Section)
-        from: Summer 2023
-        to: Present
-  - label: Certifications
-    entries:
-      - title: ASNT VT Level I/II
-        subtitle: Kiewit University
-        from: August 2022
-      - title: Operations Quality Control
-        subtitle: Kiewit University
-        from: October 2022
-      - title: EIT - Engineer In Training
-        subtitle: Kansas State Board of Technical Professions
-        from: February 2023
-      - title: Basic Coatings Inspector
-        subtitle: AMPP – Association for Materials Protection and Performance
-        from: March 2023
-  - label: Activities and Achievements
-    entries:
-      - title: Epsilon ETA Sigma (LETU Engineer Honors Society)
-        subtitle: LeTourneau University
-        from: April 2022
-      - title: Distinguished Senior
-        subtitle: LeTourneau University
-        from: March 2022
-      - title: Honors College Member
-        subtitle: LeTourneau University
-        from: Fall 2018
-        to: Spring 2022
-      - title: President's List
-        subtitle: LeTourneau University
-        from: Spring 2019
-        to: Spring 2021
