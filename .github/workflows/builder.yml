@@ -1,0 +1,29 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-go@v4
+      with:
+        go-version: '1.21.x'
+    - run: cd builder && go build -o builder . && cd ../
+    - run: wget "https://github.com/tectonic-typesetting/tectonic/releases/download/tectonic@0.14.1/tectonic-0.14.1-x86_64-unknown-linux-musl.tar.gz" -O 'tectonic.tar.gz'
+    - run: tar -xf 'tectonic.tar.gz'
+    - run: rm 'tectonic.tar.gz'
+    - run: mv 'tectonic' '/usr/bin/tectonic'
+    - run: ./builder/build.sh 'William Floyd'
+    - run: ls output
+    - uses: actions/upload-artifact@v3
+      with:
+        name: Resume
+        path: output/*
