@@ -4,11 +4,9 @@ WORKDIR /build
 
 COPY builder/ .
 
-RUN --mount=type=cache,target=/go/pkg/mod --mount=type=cache,target=/root/.cache/go-build go build -o main .
+RUN --mount=type=cache,target=/go/pkg/mod --mount=type=cache,target=/root/.cache/go-build go build -o builder .
 
 FROM alpine:latest
-
-WORKDIR /build/
 
 ENV TECTONIC_VERSION=0.14.1
 ENV TERM xterm-256color
@@ -22,7 +20,7 @@ RUN mv 'tectonic' '/usr/bin/tectonic'
 
 RUN apk add --update --no-cache bash fontconfig
 
-COPY ./builder ./builder
-COPY --from=0 /build/main ./builder/builder
+COPY ./builder /builder
+COPY --from=0 /build/builder /builder/builder
 
-ENTRYPOINT ["bash", "./builder/build.sh"]
+ENTRYPOINT ["bash", "/builder/build.sh"]

@@ -2,8 +2,8 @@ services:
   builder:
     build: .
     volumes:
-      - ./data/:/build/data/
-      - ./output:/build/output/
+      - ./data/:/data/
+      - ./output:/output/
       - cache:/root/.cache/Tectonic/
     environment:
       - BUILDER_PRINT_TO_STDOUT=false
