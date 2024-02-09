@@ -33,8 +33,8 @@ sections:
         to: Dec 2023   # 2023-12-15
         description: >
           Partnered with 6 primary clients in the successful operation of the Epic Population Health suite (Healthy Planet), as well as backup staffing support across a larger customer base.
-          Responsibilities included customer-facing technical root cause analysis, liaising with internal R\&D teams to develop solutions, and proactively supporting broader adoption of the software suite amongst customers, including presentations at the executive level.
-          Developed searches to determine patient-level data correction, and acted as subject matter expert for cardiology and diabetes predictive models.
+          Responsibilities included customer-facing technical root cause analysis, liaising with internal R\&D teams to develop bespoke solutions, and proactively supporting the broader adoption of the software suite amongst customers, including presentations at the executive level.
+          Developed computer searches to determine patient-level data correction, and acted as subject matter expert for cardiology and diabetes predictive models.
       - title: Engineering Design Internship
         subtitle: LeTourneau University
         from: Summer 2021 # 2021-05-10 -> 2021-08-20
@@ -48,7 +48,7 @@ sections:
         to: Dec 2021
         seasonal: true
         description: >
-          Fabricated tube steel table frames and components integrated into lead shields for the nuclear industry in Oak Ridge, TN.
+          Fabricated tube steel table frames and components which are integrated into lead shields for the nuclear testing industry in Oak Ridge, TN.
           Additionally designed, marketed, and manufactured components for mechanical keyboards.
       - title: Teaching and Grading Assistant
         subtitle: LeTourneau University
@@ -56,7 +56,7 @@ sections:
         to: Fall 2021   # 2021-11-19
         description: >
           Taught students basic assembly and problem-solving techniques, and diagnosed and resolved assembly issues, including troubleshooting and tuning FDM 3D printers.
-          Grading assistant for SolidWorks 3D models in IEP 1 Graphics Lab, developed custom software to aid in automatic analysis of model conformance to rubric.
+          Grading assistant for SolidWorks 3D models in IEP 1 Graphics Lab, developed custom software to aid in automatic analysis of model conformance to rubric using programmatic comparison of solids models,
   - label: Projects
     entries:
       - title: LEGRange (Senior Design, sponsored by Sandia National Labs)
@@ -74,6 +74,7 @@ sections:
         description: >
           Open source software that provides an MQTT client to interface with HomeAssistant, a home automation software suite.
           Programmed in Golang, this tool allows creating arbitrary sensors, switches, lights, etc. based on locally run commands, or builtin routines.
+          Utilizes custom automatic code generation based on upstream specifications to ease development burden.
         from: Oct 2020
         to: Present
       - title: ClickBait (Sophomore Design Project)
