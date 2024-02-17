@@ -56,7 +56,7 @@ sections:
         to: Fall 2021   # 2021-11-19
         description: >
           Taught students basic assembly and problem-solving techniques, and diagnosed and resolved assembly issues, including troubleshooting and tuning FDM 3D printers.
-          Grading assistant for SolidWorks 3D models in IEP 1 Graphics Lab, developed custom software to aid in automatic analysis of model conformance to rubric using programmatic comparison of solids models,
+          Grading assistant for SolidWorks 3D models in IEP 1 Graphics Lab, developed custom software to aid in automatic analysis of model conformance to rubric using programmatic comparison of solids models.
   - label: Projects
     entries:
       - title: LEGRange (Senior Design, sponsored by Sandia National Labs)
