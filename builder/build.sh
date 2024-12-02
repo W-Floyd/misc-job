@@ -26,4 +26,8 @@ find "${__output_dir}" -maxdepth 1 -type f -iname '*.tex' | while read -r __file
     done
 done
 
+find "${__output_dir}" -maxdepth 1 -type f -iname '*.pdf' | while read -r __file; do
+    mv "${__file}" "${__file// /_}"
+done
+
 exit
