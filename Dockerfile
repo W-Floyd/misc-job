@@ -8,7 +8,7 @@ RUN --mount=type=cache,target=/go/pkg/mod --mount=type=cache,target=/root/.cache
 
 FROM alpine:latest
 
-ENV TECTONIC_VERSION=0.14.1
+ENV TECTONIC_VERSION=0.15.0
 ENV TERM xterm-256color
 
 RUN apk add --update --no-cache wget
