@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: PDF Builder
 
 on:
   push:
@@ -24,7 +24,7 @@ jobs:
     - uses: actions/upload-artifact@v4
       with:
         name: Resume
-        path: output/William Floyd.pdf
+        path: output/William_Floyd.pdf
     - uses: andreaswilli/delete-release-assets-action@v3.0.0
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
