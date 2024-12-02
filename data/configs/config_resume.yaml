@@ -27,6 +27,15 @@ sections:
         from: May 2022
   - label: Work Experience
     entries:
+      - title: Associate Project Manager
+        subtitle: Engenious Design
+        from: Apr 2024
+        to: Present
+        description: >
+          Leads the planning and execution of new medical device development across multiple projects.
+          Develops project budget estimates and timelines, and regularly communicates progress to clients.
+          Excels in collaborating with engineers of all disciplines in developing elegant solutions to technical problems, including high level design and hands on troubleshooting.
+          Directs and partners with engineers in developing and adhering to work breakdown structures for given projects.
       - title: Technical Services Engineer
         subtitle: Epic Systems Corporation
         from: Aug 2022
