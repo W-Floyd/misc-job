@@ -1,11 +1,11 @@
-{{- if and (or .description .bullets .entries) (or .title .subtitle .to .from) }}
+{{- if and (or .description .bullets .entries) (or .title .subtitle .to .from) (not .shorten) }}
 	\vfill\break
 {{ end -}}
-{{ if and (or .description .bullets .entries) (not .lefttext) -}}
+{{ if and (or .description .bullets .entries) (not .lefttext) (not .shorten) -}}
 \begin{minipage}{\linewidth}
 \begin{adjustwidth}{ {{- v "config.contentindent" -}} }{0pt}
 {{ end -}}
-{{- if .description -}}
+{{- if and .description (not .shorten) -}}
 	{{ .description -}}
 {{- end -}}
 {{ if .bullets }}
@@ -20,7 +20,7 @@
 {{ if .entries -}}
 	{{ join .entries ", " }}
 {{- end -}}
-{{ if and (or .description .bullets .entries) (not .lefttext) -}}
+{{ if and (or .description .bullets .entries) (not .lefttext) (not .shorten) -}}
 \end{adjustwidth}
 \end{minipage}
 {{- end }}

@@ -36,7 +36,7 @@
 {{- range $index, $entry := $section.entries -}}
 {{- if (not $entry.disable) -}}
 {{- template "resume/entry/section.tex" $entry }}
-{{- if and (not (eq $length (inc $index))) (and (or .title .subtitle .to .from) (or .description .entries .bullets)) -}}
+{{- if and (not (eq $length (inc $index))) (or .title .subtitle .to .from) (or .description .entries .bullets) (not $entry.shorten) -}}
 {{- v "config.entrygap" -}}
 {{- end -}}
 \\
