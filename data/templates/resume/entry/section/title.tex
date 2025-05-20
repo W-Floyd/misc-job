@@ -10,5 +10,12 @@
 {{- end -}}
 
 {{- if .subtitle -}}
-	\textit{ - {{ .subtitle -}} }
+	{{- if .subtitle_url -}}
+		\textit{ - \href{ {{- .subtitle_url -}} }{ {{ .subtitle -}} } }
+	{{- else -}}
+		\textit{ - {{ .subtitle -}} }
+	{{- end -}}
+{{- end -}}
+{{- if .location -}}
+	\textit{ ( {{- .location -}} ) }
 {{- end -}}
