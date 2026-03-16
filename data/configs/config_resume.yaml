@@ -94,6 +94,7 @@ sections:
     entries:
       - title: LEGRange (Senior Design, spon. by Sandia National Labs)
         subtitle: LeTourneau University
+        url: https://www.letu.edu/academics/engineering/nathan_green_senior_design_team.html
         subtitle_url: https://letu.edu/
         location: Longview, TX, USA
         from: Fall 2021
