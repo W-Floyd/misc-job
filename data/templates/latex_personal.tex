@@ -18,10 +18,14 @@
 \begin{minipage}{\linewidth}
 	\begin{flushright}
 		\textit{
-			\href{tel: {{- .personal.phone -}} }{ {{- .personal.phone -}} } \hspace{1mm}
-			{{- if .theme.icons -}} \color{accentlight}\faIcon{phone-square}\color{black} {{- end -}}  \\
-			\href{mailto: {{- .personal.email -}} }{ {{- .personal.email -}} } \hspace{1mm}
-			{{- if .theme.icons -}} \color{accentlight}\faIcon{envelope}\color{black} {{- end -}}  \\
+			{{- if .personal.phone -}}
+				\href{tel: {{- .personal.phone -}} }{ {{- .personal.phone -}} } \hspace{1mm}
+				{{- if .theme.icons -}} \color{accentlight}\faIcon{phone-square}\color{black} {{- end -}}  \\
+			{{- end -}}
+			{{- if .personal.email -}}
+				\href{mailto: {{- .personal.email -}} }{ {{- .personal.email -}} } \hspace{1mm}
+				{{- if .theme.icons -}} \color{accentlight}\faIcon{envelope}\color{black} {{- end -}}  \\
+			{{- end -}}
 			{{ range $entry := .personal.extra_links -}}
 				\href{ {{- $entry.url -}} }{ 
 					{{- if $entry.display_title }}

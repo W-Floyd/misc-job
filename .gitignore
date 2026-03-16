@@ -2,3 +2,4 @@
 /builder/builder
 **/private
 /data/secrets/*
+.DS_Store
