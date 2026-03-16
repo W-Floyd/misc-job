@@ -35,7 +35,7 @@ sections:
         from: Jan 2025
         to: Present
         description: >
-          Develops and supports payments orchestration software for clients with 12M+ active users making 10M+ transactions per month totaling \$1B+ in value.
+          Develops and supports payments orchestration software (Golang) for clients with 12M+ active users making 10M+ transactions per month totaling \$1B+ in value.
           Interfaces with client teams to understand business needs and thoughtfully translate these requirements into payment orchestration compositions.
           Develops tooling to reduce friction in composing and testing payments flows, supporting both human use-cases and AI integration.
       - title: Associate Project Manager
@@ -92,7 +92,7 @@ sections:
           Grading assistant for SolidWorks 3D models in IEP 1 Graphics Lab, developed custom software to aid in automatic analysis of model conformance to rubric using programmatic comparison of solids models.
   - label: Projects
     entries:
-      - title: LEGRange (Senior Design, spon. by Sandia National Labs)
+      - title: LEGRange (Senior Design, spon. Sandia National Labs)
         subtitle: LeTourneau University
         url: https://www.letu.edu/academics/engineering/nathan_green_senior_design_team.html
         subtitle_url: https://letu.edu/
